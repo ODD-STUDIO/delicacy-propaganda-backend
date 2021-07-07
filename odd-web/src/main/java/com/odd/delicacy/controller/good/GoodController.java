@@ -39,6 +39,7 @@ public class GoodController {
     @GetMapping("/list/{pageNum}")
     public ResponseBean<PageVO<Good>> listGoods(@PathVariable("pageNum") int pageNum, Good good) {
         // 构建分页查询对象
+        //
         // TODO 这里写死为一页 6 条，后期可以更改为前端传值
         PageInfo<Good> pageInfo = PageUtil.pageInfo(pageNum, 6);
         return ResponseBean.success(goodService.findPage(pageInfo, good));
