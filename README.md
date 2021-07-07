@@ -23,7 +23,7 @@
 ```
 #### base 包
 主要提供实体类、Mapper类、Service类的基类，提高代码复用性。
-- BaseEntity<T>：要求所有实体类必须继承此类，无需再定义 `id`, `create_time`, `update_time`, `is_deleted` 这些公共字段。例如:
+- BaseEntity<T>：要求所有实体类(除了一些中间表对应的类)必须继承此类，无需再定义 `id`, `create_time`, `update_time`, `is_deleted` 这些公共字段。例如:
   - ```java
       public class Entity extends BaseEntity<Entity> {
         ......
