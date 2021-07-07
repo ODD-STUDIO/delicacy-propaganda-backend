@@ -4,8 +4,8 @@
 - IDEA 下载 `lombok` 插件
 - 本地建数据库 `delicacy`，统一表中主键名为 `id`，创建时间名为 `create_time`，更新时间名为 `update_time`，逻辑删除字段名为 `is_deleted`，不一致请更改
 ## 2. 快速开发
-- 请修改 `odd-web` 模块下的 src/main/resources/jdbc-dev.properties，将数据库连接名和密码修改为本地相关。
-- 本项目分为生产环境和开发环境，默认为开发环境(dev)，连接本地数据库；生产环境连接阿里云服务器数据库。
+- 请修改 `odd-web` 模块下的 src/main/resources/jdbc-dev.properties，**将数据库连接名和密码修改为本地相关。**
+- 本项目分为生产环境和开发环境，默认为开发环境(dev)，连接本地数据库；生产环境连接阿里云服务器数据库。(生产环境数据库还没有建，大家把字段改好后把脚本发出来再建库)
 - 切换开发环境：修改 `odd-web` 模块下的 src/main/web/WEB-INF/web.xml，将 <param-value>dev</param-value> 修改为 prod。
 ## 3. 项目架构
 本项目采用经典三层架构：即自上而下分别为：用户界面层(odd-web)，业务逻辑层(odd-service)，数据访问层(odd-dao)。
