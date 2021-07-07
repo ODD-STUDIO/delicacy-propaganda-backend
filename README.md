@@ -57,6 +57,8 @@
    PageInfo<Entity> pageInfo = PageUtil.pageInfo(pageNum, pageSize);
   ```
   分页对象 pageInfo 主要由 Controller 层构建，然后直接传入 findPage(pageInfo, entity) 方法，该方法已经在 BaseService 中定义并实现，无需管多余操作，可以参考 `Good` 相关业务代码。
+#### valid 包
+主要用于接口参数的分组验证，可以参考 `GoodController` 
 #### vo 包
 主要定义一些 VO 类，用于返回前端渲染。目前只定义了 PageVO，由于 PageHelper 分页插件的对象 PageInfo 中包含字段太冗杂，考虑到前端无需过多字段，于是在 BaseService 中的 findPage 方法中，将 Controller 层传入的 PageInfo 对象转换成了 PgeVO 对象并返回，所以 Controller 接口返回属性应该是 `ResponseBean<PageVO<Entity>>`
 
