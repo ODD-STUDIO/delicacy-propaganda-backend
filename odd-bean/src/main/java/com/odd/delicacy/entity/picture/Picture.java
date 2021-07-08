@@ -21,7 +21,7 @@ public class Picture extends BaseEntity<Picture> {
     /** 关联 id */
     private Long associateId;
 
-    /** 图片状态：0表示正常，1表示屏蔽 */
+    /** 图片状态：0表示正常，1表示屏蔽 2 表示首页展示 */
     private Integer status;
 
     /** 图片排序，大的在前小的在后，默认为 0 */
