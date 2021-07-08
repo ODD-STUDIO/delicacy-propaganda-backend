@@ -1,4 +1,4 @@
-package com.odd.delicacy.controller.picture;
+package com.odd.delicacy.entity.picture;
 
 import com.odd.delicacy.base.BaseEntity;
 import lombok.AllArgsConstructor;
