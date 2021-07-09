@@ -17,7 +17,7 @@ import java.util.List;
 public abstract class BaseService<M extends BaseMapper<T>, T extends BaseEntity<T>> {
 
     @Autowired
-    private M mapper;
+    protected M mapper;
 
     /**
      * 根据 Id 查询

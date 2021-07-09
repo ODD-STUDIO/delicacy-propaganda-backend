@@ -1,4 +1,4 @@
-package com.odd.delicacy.controller.good;
+package com.odd.delicacy.controller.back;
 
 import com.github.pagehelper.PageInfo;
 import com.odd.delicacy.api.ResponseBean;
@@ -17,15 +17,15 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * 商品相关接口
+ * 管理后台商品相关接口
  *
  * @author Tanglinfeng
  * @date 2021/7/5 18:18
  */
 @RestController
-@RequestMapping("/good")
+@RequestMapping("/back/goods")
 @AllArgsConstructor
-public class GoodController {
+public class GoodBackController {
 
     private final GoodService goodService;
 
