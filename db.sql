@@ -14,6 +14,10 @@
  Date: 08/07/2021 15:23:47
 */
 
+# Now you can right click this file to run directly
+CREATE DATABASE IF NOT EXISTS delicacy;
+USE delicacy;
+
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 

@@ -3,3 +3,5 @@
 /odd-service/target/
 /odd-web/target/
 /odd-bean/target/
+/.idea/
+/out/

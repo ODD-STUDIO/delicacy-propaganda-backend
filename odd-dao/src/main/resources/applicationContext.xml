@@ -7,8 +7,8 @@
     <!--开启注解扫描-->
     <context:component-scan base-package="com.odd.delicacy"/>
 
-    <!-- 根据所选环境 (web.xml 里配置) 加载jdbc.properties文件-->
-    <context:property-placeholder location="classpath:jdbc-${spring.profiles.active}.properties" ignore-unresolvable="true"/>
+    <!-- dev加载jdbc-dev.properties文件-->
+    <context:property-placeholder location="classpath:jdbc-dev.properties" ignore-unresolvable="true"/>
 
     <!-- 连接池-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
@@ -21,7 +21,7 @@
     <!-- Spring 整合 mybatis-->
     <bean class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath:mapper/*/*.xml"/>
+        <property name="mapperLocations" value="classpath:mapper/good/GoodMapper.xml"/>
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <property name="typeAliasesPackage" value="com.odd.delicacy.entity"/>
         <!-- 分页插件 PageHelper 配置 -->
