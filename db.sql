@@ -270,12 +270,13 @@ CREATE TABLE `picture` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `create_time` datetime NOT NULL,
   `update_time` datetime NULL DEFAULT NULL ,
-  `is_delete` tinyint(1) DEFAULT '0',
+  `is_deleted` tinyint(1) DEFAULT '0',
   `url` varchar(64) DEFAULT NULL COMMENT '对应实体的URL',
   `associate_id` bigint NOT NULL COMMENT '该对象与其他实体关联的ID',
   `status` int DEFAULT '0' COMMENT '图片的状态，0为正常，1为屏蔽（不启用），2为首页展示',
   `order_num` int DEFAULT '0' COMMENT '前端展示的顺序，大号在前',
   `type` varchar(8) NOT NULL COMMENT '标识图片将会应用哪一个页面，例如防止于首页的图片此处值为''HOME''.',
+  `link` varchar(64) NULL COMMENT '图片跳转链接'
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='存储项目中需要用到的所有图片，仅保存对象URL';
 /*!40101 SET character_set_client = @saved_cs_client */;

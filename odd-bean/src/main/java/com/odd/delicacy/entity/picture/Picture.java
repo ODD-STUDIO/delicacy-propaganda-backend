@@ -16,7 +16,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Picture extends BaseEntity<Picture> {
 
+    /** 图片地址 */
     private String url;
+
+    /** 跳转链接 */
+    private String link;
 
     /** 关联 id */
     private Long associateId;
@@ -27,6 +31,6 @@ public class Picture extends BaseEntity<Picture> {
     /** 图片排序，大的在前小的在后，默认为 0 */
     private Integer orderNum;
 
-    /** 图片类型：GOOD、NEWS 等 */
+    /** 图片类型：GOODS、NEWS 等 */
     private String type;
 }

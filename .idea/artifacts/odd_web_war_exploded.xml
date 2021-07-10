@@ -11,6 +11,7 @@
           <element id="module-output" name="odd-dao" />
           <element id="module-output" name="odd-bean" />
           <element id="module-output" name="commons" />
+          <element id="module-output" name="delicacy-propaganda-backend" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-context:5.3.5" />

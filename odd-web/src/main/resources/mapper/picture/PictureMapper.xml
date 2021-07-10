@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.odd.delicacy.mapper.picture.PictureMapper">
+
+
+    <sql id="selectPicture">
+        SELECT
+               id, url, status, order_num, type, associate_id, create_time, update_time
+        FROM
+               picture
+    </sql>
+
+<!--    <insert id="insert" parameterType="good">-->
+<!--        INSERT INTO good-->
+<!--            (good_name, good_desc, good_category_id,-->
+<!--                <if test="goodStatus != null">-->
+<!--                    good_status,-->
+<!--                </if>-->
+<!--             good_thumb, create_time)-->
+<!--        VALUES-->
+<!--            (#{goodName}, #{goodDesc}, #{goodCategory.id},-->
+<!--                <if test="goodStatus != null">-->
+<!--                    #{goodStatus},-->
+<!--                </if>-->
+<!--             #{goodThumb}, now())-->
+<!--    </insert>-->
+
+    <select id="findList" parameterType="Picture" resultType="Picture">
+        <include refid="selectPicture"/>
+        WHERE
+        <if test="type != null and type != ''">
+            type like concat(#{type}, '%') AND
+        </if>
+        is_deleted = 0
+    </select>
+
+<!--    <update id="update" parameterType="Good">-->
+<!--        UPDATE good-->
+<!--        <set>-->
+<!--            <if test="goodName != null and goodName != ''">-->
+<!--                good_name = #{goodName},-->
+<!--            </if>-->
+<!--            <if test="goodDesc != null and goodDesc != ''">-->
+<!--                good_desc = #{goodDesc},-->
+<!--            </if>-->
+<!--            <if test="goodThumb != null and goodThumb != ''">-->
+<!--                good_thumb = #{goodThumb},-->
+<!--            </if>-->
+<!--            <if test="goodCategory != null">-->
+<!--                good_category_id = #{goodCategory.id},-->
+<!--            </if>-->
+<!--            <if test="goodStatus != null and goodStatus != ''">-->
+<!--                good_status = #{goodStatus},-->
+<!--            </if>-->
+<!--            update_time = now()-->
+<!--        </set>-->
+<!--    </update>-->
+
+<!--    <update id="deleteById" parameterType="long">-->
+<!--        UPDATE good-->
+<!--        SET is_deleted = 1, update_time = now()-->
+<!--        WHERE id = #{id}-->
+<!--    </update>-->
+</mapper>

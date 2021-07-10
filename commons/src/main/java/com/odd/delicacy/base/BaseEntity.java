@@ -1,5 +1,6 @@
 package com.odd.delicacy.base;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -21,7 +22,9 @@ public class BaseEntity<T> implements Serializable {
 
     private Integer isDeleted;
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date createTime;
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date updateTime;
 }
