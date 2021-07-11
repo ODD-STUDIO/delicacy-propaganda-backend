@@ -7,19 +7,25 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
     <title>ODD STUDIO</title>
-    <link rel="stylesheet" type="text/css" href="../../../static/front/css/reset.css"/>
-    <script type="text/javascript" src="../../../static/front/js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="../../../static/front/js/js_z.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../../static/front/plugins/FlexSlider/flexslider.css">
-    <script type="text/javascript" src="../../../static/front/plugins/FlexSlider/jquery.flexslider.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/front/css/reset.css"/>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/static/front/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/front/js/js_z.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="${pageContext.request.contextPath}/static/front/plugins/FlexSlider/flexslider.css">
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/static/front/plugins/FlexSlider/jquery.flexslider.js"></script>
     <!--3d滚动-->
-    <link rel="stylesheet" type="text/css" href="../../../static/front/plugins/3d_gd/css/style.css">
-    <script type="text/javascript" src="../../../static/front/plugins/3d_gd/js/jquery.roundabout-1.0.min.js"></script>
-    <script type="text/javascript" src="../../../static/front/plugins/3d_gd/js/jquery.easing.1.3.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="${pageContext.request.contextPath}/static/front/plugins/3d_gd/css/style.css">
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/static/front/plugins/3d_gd/js/jquery.roundabout-1.0.min.js"></script>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/static/front/plugins/3d_gd/js/jquery.easing.1.3.js"></script>
     <!--3d滚动-->
-    <script type="text/javascript" src="../../../static/front/js/main.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../../static/front/css/thems.css">
-    <link rel="stylesheet" type="text/css" href="../../../static/front/css/responsive.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/front/js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/front/css/thems.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/front/css/responsive.css">
     <script type="text/javascript">
         $(document).ready(function () {
             $('#featured-area ul').roundabout({
@@ -40,26 +46,27 @@
 <div class="header">
     <div class="head_bg">&nbsp;</div>
     <div class="head clearfix">
-        <div class="logo"><a href=""><img src="../../../static/front/images/logo.png" alt="黑茶"/></a></div>
+        <div class="logo"><a href=""><img src="${pageContext.request.contextPath}/static/front/images/logo.png"
+                                          alt="黑茶"/></a></div>
         <ul class="nav clearfix">
-            <li class="now"><a href="index.jsp">首页<span>HOME</span></a></li>
-            <li><a href="about.jsp">关于我们<span>ABOUT</span></a></li>
-            <li><a href="product.jsp">产品简介<span>PRODUCT</span></a></li>
-            <li><a href="join.jsp">加盟说明<span>JOIN</span></a></li>
-            <li><a href="jstore.jsp">门店资讯<span>JSTORE</span></a></li>
-            <li><a href="news.jsp">新闻中心<span>NEWS</span></a></li>
-            <li><a href="contact.jsp">联系我们<span>CONTACT</span></a></li>
+            <li class="now"><a href="index">首页<span>HOME</span></a></li>
+            <li><a href="about">关于我们<span>ABOUT</span></a></li>
+            <li><a href="product">产品简介<span>PRODUCT</span></a></li>
+            <li><a href="join">加盟说明<span>JOIN</span></a></li>
+            <li><a href="jstore">门店资讯<span>JSTORE</span></a></li>
+            <li><a href="news">新闻中心<span>NEWS</span></a></li>
+            <li><a href="contact">联系我们<span>CONTACT</span></a></li>
         </ul>
         <div class="nav_m">
             <span class="n_icon">&nbsp;</span>
             <ul>
-                <li class="now"><a href="index.jsp">首页<span>HOME</span></a></li>
-                <li><a href="about.jsp">关于我们<span>ABOUT</span></a></li>
-                <li><a href="product.jsp">产品简介<span>PRODUCT</span></a></li>
-                <li><a href="join.jsp">加盟说明<span>JOIN</span></a></li>
-                <li><a href="jstore.jsp">门店资讯<span>JSTORE</span></a></li>
-                <li><a href="news.jsp">新闻中心<span>NEWS</span></a></li>
-                <li><a href="contact.jsp">联系我们<span>CONTACT</span></a></li>
+                <li class="now"><a href="index">首页<span>HOME</span></a></li>
+                <li><a href="about">关于我们<span>ABOUT</span></a></li>
+                <li><a href="product">产品简介<span>PRODUCT</span></a></li>
+                <li><a href="join">加盟说明<span>JOIN</span></a></li>
+                <li><a href="jstore">门店资讯<span>JSTORE</span></a></li>
+                <li><a href="news">新闻中心<span>NEWS</span></a></li>
+                <li><a href="contact">联系我们<span>CONTACT</span></a></li>
             </ul>
         </div>
     </div>
@@ -71,13 +78,13 @@
         <div class="flexslider">
             <ul class="slides">
                 <li>
-                    <img src="../../../static/front/upload/banner.jpg" alt=""/>
+                    <img src="${pageContext.request.contextPath}/static/front/upload/banner.jpg" alt=""/>
                 </li>
                 <li>
-                    <img src="../../../static/front/upload/banner.jpg" alt=""/>
+                    <img src="${pageContext.request.contextPath}/static/front/upload/banner.jpg" alt=""/>
                 </li>
                 <li>
-                    <img src="../../../static/front/upload/banner.jpg" alt=""/>
+                    <img src="${pageContext.request.contextPath}/static/front/upload/banner.jpg" alt=""/>
                 </li>
             </ul>
         </div>
@@ -100,14 +107,18 @@
 </div>
 <!--幻灯片-->
 <div class="i_box gy">
-    <div class="title"><img src="../../../static/front/images/n_1.png" alt=""/></div>
+    <div class="title"><img src="${pageContext.request.contextPath}/static/front/images/n_1.png" alt=""/></div>
     <div class="gy_m">
         <div id="featured-area">
             <ul>
-                <li><a href=""><img src="../../../static/front/upload/pic4.jpg" alt=""/></a></li>
-                <li><a href=""><img src="../../../static/front/upload/pic4.jpg" alt=""/></a></li>
-                <li><a href=""><img src="../../../static/front/upload/pic4.jpg" alt=""/></a></li>
-                <li><a href=""><img src="../../../static/front/upload/pic4.jpg" alt=""/></a></li>
+                <li><a href=""><img src="${pageContext.request.contextPath}/static/front/upload/pic4.jpg" alt=""/></a>
+                </li>
+                <li><a href=""><img src="${pageContext.request.contextPath}/static/front/upload/pic4.jpg" alt=""/></a>
+                </li>
+                <li><a href=""><img src="${pageContext.request.contextPath}/static/front/upload/pic4.jpg" alt=""/></a>
+                </li>
+                <li><a href=""><img src="${pageContext.request.contextPath}/static/front/upload/pic4.jpg" alt=""/></a>
+                </li>
             </ul>
         </div>
         <div class="gy_a"><span>{ 黑茶店铺 }</span></div>
@@ -121,8 +132,8 @@
     </div>
 </div>
 <div class="i_box i_pro">
-    <div class="bg"><img src="../../../static/front/images/bg.png" alt=""/></div>
-    <div class="title"><img src="../../../static/front/images/n_2.png" alt=""/></div>
+    <div class="bg"><img src="${pageContext.request.contextPath}/static/front/images/bg.png" alt=""/></div>
+    <div class="title"><img src="${pageContext.request.contextPath}/static/front/images/n_2.png" alt=""/></div>
     <div class="i_pro_m">
         <div class="pro_m_ctn pro_ma">
             <h5><a href=""><span>青桔</span>柠檬</a></h5>
@@ -140,14 +151,14 @@
             <h5><a href=""><span>招牌</span>黑茶</a></h5>
             <p>口感清新甘甜，又具传统黑茶的醇和口感，是一款具有独特的台湾风味茶饮</p>
         </div>
-        <div class="tu"><img src="../../../static/front/images/pic2.png" alt=""/></div>
+        <div class="tu"><img src="${pageContext.request.contextPath}/static/front/images/pic2.png" alt=""/></div>
     </div>
     <div class="xl">
         <ul class="xl_m clearfix">
-            <li><img src="../../../static/front/images/pic3.png" alt=""/></li>
-            <li><img src="../../../static/front/images/pic4.png" alt=""/></li>
-            <li><img src="../../../static/front/images/pic5.png" alt=""/></li>
-            <li><img src="../../../static/front/images/pic6.png" alt=""/></li>
+            <li><img src="${pageContext.request.contextPath}/static/front/images/pic3.png" alt=""/></li>
+            <li><img src="${pageContext.request.contextPath}/static/front/images/pic4.png" alt=""/></li>
+            <li><img src="${pageContext.request.contextPath}/static/front/images/pic5.png" alt=""/></li>
+            <li><img src="${pageContext.request.contextPath}/static/front/images/pic6.png" alt=""/></li>
         </ul>
         <div class="xl_a">
             <div class="xl_a1">选料<span>用心，</span></div>
@@ -157,11 +168,11 @@
 </div>
 <div class="space_hx">&nbsp;</div>
 <div class="dp">
-    <div class="bg"><img src="../../../static/front/images/bg_b.png" alt=""/></div>
-    <div class="title"><img src="../../../static/front/images/n_6.png" alt=""/></div>
+    <div class="bg"><img src="${pageContext.request.contextPath}/static/front/images/bg_b.png" alt=""/></div>
+    <div class="title"><img src="${pageContext.request.contextPath}/static/front/images/n_6.png" alt=""/></div>
     <ul class="dp_l clearfix">
         <li class="one">
-            <div class="tu"><img src="../../../static/front/images/pic7.png" alt=""/></div>
+            <div class="tu"><img src="${pageContext.request.contextPath}/static/front/images/pic7.png" alt=""/></div>
             <div class="wen">
                 <p class="py">XIA RI BING GUO CHA</p>
                 <div class="name">夏日<em>水果茶</em></div>
@@ -173,7 +184,7 @@
             </div>
         </li>
         <li class="two">
-            <div class="tu"><img src="../../../static/front/images/pic7.png" alt=""/></div>
+            <div class="tu"><img src="${pageContext.request.contextPath}/static/front/images/pic7.png" alt=""/></div>
             <div class="wen">
                 <p class="py">MA LI SU</p>
                 <div class="name">玛丽<em>苏</em></div>
@@ -185,7 +196,7 @@
             </div>
         </li>
         <li class="three">
-            <div class="tu"><img src="../../../static/front/images/pic7.png" alt=""/></div>
+            <div class="tu"><img src="${pageContext.request.contextPath}/static/front/images/pic7.png" alt=""/></div>
             <div class="wen">
                 <p class="py">HEI CHA</p>
                 <div class="name">黑<em>茶</em></div>
@@ -197,7 +208,7 @@
             </div>
         </li>
         <li class="four">
-            <div class="tu"><img src="../../../static/front/images/pic7.png" alt=""/></div>
+            <div class="tu"><img src="${pageContext.request.contextPath}/static/front/images/pic7.png" alt=""/></div>
             <div class="wen">
                 <p class="py">QING JU NING MENG</p>
                 <div class="name">青桔<em>柠檬</em></div>
@@ -212,20 +223,20 @@
 </div>
 <div class="space_hx">&nbsp;</div>
 <div class="i_box md">
-    <div class="bg"><img src="../../../static/front/images/bg_c.png" alt=""/></div>
-    <div class="title"><img src="../../../static/front/images/n_3.png" alt=""/></div>
+    <div class="bg"><img src="${pageContext.request.contextPath}/static/front/images/bg_c.png" alt=""/></div>
+    <div class="title"><img src="${pageContext.request.contextPath}/static/front/images/n_3.png" alt=""/></div>
     <div class="md_m">
-        <div class="dm_ma"><img src="../../../static/front/upload/pic5.png" alt=""/></div>
-        <div class="dm_mb"><img src="../../../static/front/upload/pic5.png" alt=""/></div>
-        <div class="dm_mc"><img src="../../../static/front/upload/pic5.png" alt=""/></div>
-        <div class="dm_md"><img src="../../../static/front/upload/pic5.png" alt=""/></div>
+        <div class="dm_ma"><img src="${pageContext.request.contextPath}/static/front/upload/pic5.png" alt=""/></div>
+        <div class="dm_mb"><img src="${pageContext.request.contextPath}/static/front/upload/pic5.png" alt=""/></div>
+        <div class="dm_mc"><img src="${pageContext.request.contextPath}/static/front/upload/pic5.png" alt=""/></div>
+        <div class="dm_md"><img src="${pageContext.request.contextPath}/static/front/upload/pic5.png" alt=""/></div>
     </div>
 </div>
 <div class="space_hx">&nbsp;</div>
 <div class="i_box hz">
-    <div class="title"><img src="../../../static/front/images/n_4.png" alt=""/></div>
+    <div class="title"><img src="${pageContext.request.contextPath}/static/front/images/n_4.png" alt=""/></div>
     <dl class="hz_m clearfix">
-        <dt><img src="../../../static/front/upload/pic6.jpg" alt=""/></dt>
+        <dt><img src="${pageContext.request.contextPath}/static/front/upload/pic6.jpg" alt=""/></dt>
         <dd>
             <div class="title_a">
                 加入黑茶<em>JOIN US</em>
@@ -253,9 +264,9 @@
 </div>
 <div class="space_hx">&nbsp;</div>
 <div class="i_box lx">
-    <div class="title"><img src="../../../static/front/images/n_5.png" alt=""/></div>
+    <div class="title"><img src="${pageContext.request.contextPath}/static/front/images/n_5.png" alt=""/></div>
     <div class="lx_m clearfix">
-        <a href=""><img src="../../../static/front/images/icon6.png" alt=""/></a>
+        <a href=""><img src="${pageContext.request.contextPath}/static/front/images/icon6.png" alt=""/></a>
         <p>加盟热线：0755-82369636</p>
         <div class="if_nav">
             <a href="">关于我们</a>
@@ -268,7 +279,7 @@
 </div>
 <div class="space_hx">&nbsp;</div>
 <div class="bq">Copyright © 2007-2013 heicha.com All Rights Reserved</div>
-<script language="javascript">
+<script>
     $(function () {
 
     })
