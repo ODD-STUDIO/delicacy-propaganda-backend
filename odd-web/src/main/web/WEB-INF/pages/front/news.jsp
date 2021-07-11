@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=utf-8" language="java" %>
+<%@ page contentType="text/html;charset=utf-8"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -149,7 +149,7 @@
         </div>
     </div>
 </div>
-<script language="javascript">
+<script>
     $(function () {
 
     })
