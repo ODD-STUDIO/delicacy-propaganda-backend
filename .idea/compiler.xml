@@ -7,11 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="odd-bean" />
         <module name="odd-web" />
-        <module name="odd-service" />
+        <module name="odd-bean" />
         <module name="odd-dao" />
         <module name="commons" />
+        <module name="odd-service" />
       </profile>
     </annotationProcessing>
   </component>

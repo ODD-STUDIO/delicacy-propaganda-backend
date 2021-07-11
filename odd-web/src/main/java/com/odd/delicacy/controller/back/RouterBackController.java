@@ -78,4 +78,9 @@ public class RouterBackController {
     public String toGoodsCategoryAdd() {
         return "back/goods/goods-category-add";
     }
+
+    @GetMapping("/join")
+    public String toJoin(){
+        return "back/join";
+    }
 }
