@@ -45,34 +45,58 @@
         <if test="type != null and type != ''">
             type like concat(#{type}, '%') AND
         </if>
+        <if test="status != null and status != ''">
+            status = #{status} AND
+        </if>
         is_deleted = 0
     </select>
 
-<!--    <update id="update" parameterType="Good">-->
-<!--        UPDATE good-->
-<!--        <set>-->
-<!--            <if test="goodName != null and goodName != ''">-->
-<!--                good_name = #{goodName},-->
-<!--            </if>-->
-<!--            <if test="goodDesc != null and goodDesc != ''">-->
-<!--                good_desc = #{goodDesc},-->
-<!--            </if>-->
-<!--            <if test="goodThumb != null and goodThumb != ''">-->
-<!--                good_thumb = #{goodThumb},-->
-<!--            </if>-->
-<!--            <if test="goodCategory != null">-->
-<!--                good_category_id = #{goodCategory.id},-->
-<!--            </if>-->
-<!--            <if test="goodStatus != null and goodStatus != ''">-->
-<!--                good_status = #{goodStatus},-->
-<!--            </if>-->
-<!--            update_time = now()-->
-<!--        </set>-->
-<!--    </update>-->
+    <update id="update" parameterType="Picture">
+        UPDATE picture
+        <set>
+            <if test="url != null and url != ''">
+                url = #{url},
+            </if>
+            <if test="link != null and link != ''">
+                link = #{link},
+            </if>
+            <if test="orderNum != null and orderNum != ''">
+                order_num = #{orderNum},
+            </if>
+            <if test="status != null and status != ''">
+                status = #{status},
+            </if>
+            <if test="type != null and type != ''">
+                type = #{type},
+            </if>
+            <if test="associateId != null and associateId != ''">
+                associate_id = #{associateId},
+            </if>
+            update_time = now()
+            where id = #{id}
+        </set>
+    </update>
 
-<!--    <update id="deleteById" parameterType="long">-->
-<!--        UPDATE good-->
-<!--        SET is_deleted = 1, update_time = now()-->
-<!--        WHERE id = #{id}-->
-<!--    </update>-->
+    <select id="findById" resultType="Picture">
+        SELECT
+                id, status, type, associate_id, url, link, create_time, update_time, order_num
+        FROM
+                picture
+        WHERE
+                id = #{id}
+    </select>
+
+    <update id="deleteAll">
+        UPDATE picture SET is_deleted = 1
+        WHERE id in
+        <foreach collection="ids" open="(" separator="," close=")" item="id">
+            #{id}
+        </foreach>
+    </update>
+
+    <update id="deleteById" parameterType="long">
+        UPDATE picture
+        SET is_deleted = 1, update_time = now()
+        WHERE id = #{id}
+    </update>
 </mapper>

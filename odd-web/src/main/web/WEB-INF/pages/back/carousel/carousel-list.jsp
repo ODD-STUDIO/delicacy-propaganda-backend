@@ -29,22 +29,31 @@
         <a>
           <cite>导航元素</cite></a>
       </span>
-      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
-        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
     </div>
     <div class="x-body">
       <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so">
-          <input class="layui-input" placeholder="开始日" name="start" id="start">
-          <input class="layui-input" placeholder="截止日" name="end" id="end">
-          <div class="layui-input-inline">
-            <select name="contrller">
-              <option value="">GOODS</option>
-              <option value="0">NEWS</option>
-            </select>
+        <form class="layui-form">
+          <div class="layui-form-item">
+            <label class="layui-form-label">
+              <span class="x-red"></span>图片类型
+            </label>
+            <div class="layui-input-inline">
+              <input type="text" name="type"  placeholder="请输入图片类型" autocomplete="off" class="layui-input">
+            </div>
           </div>
-          <input type="text" name="username"  placeholder="请输入" autocomplete="off" class="layui-input">
-          <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+          <div class="layui-form-item">
+            <label class="layui-form-label">
+              <span class="x-red"></span>轮播图状态
+            </label>
+            <div class="layui-input-inline">
+              <select name="status">
+                <option value="0">显示</option>
+                <option value="1">隐藏</option>
+                <option value="2">首页显示</option>
+              </select>
+            </div>
+          </div>
+          <button class="layui-btn" data-type="reload"  lay-submit="" lay-filter="search"><i class="layui-icon">&#xe615;</i></button>
         </form>
       </div>
       <xblock class="deleteAll">
@@ -59,16 +68,12 @@
 
       let tableIns
 
-      layui.use(['laydate', 'table'], function () {
+      layui.use(['table', 'form'], function () {
         let table = layui.table;
-        let laydate = layui.laydate
+        let form = layui.form;
+        $ = layui.jquery;
 
-        laydate.render({
-          elem: '#start'
-        });
-        laydate.render({
-          elem: '#end'
-        });
+        form.render()
 
         tableIns = table.render({
               elem: '#data-table',
@@ -98,7 +103,7 @@
                 { field: 'associateId', width: '10%', title: '关联ID' },
                 { field: 'type', width: '7%', title: '图片类型' },
                 { field: 'link', width: '13%', title: '图片跳转' },
-                { field: 'orderNum', width: '5%', title: '排序' },
+                { field: 'orderNum', width: '5%', title: '排序', sort: true},
                 { field: 'status', title: '状态', width: '7%', templet: function (d) {
                     let text;
                     let clazz;
@@ -124,6 +129,19 @@
               ]],
             });
 
+
+        form.on('submit(search)', function (data) {
+          tableIns.reload({
+            method : 'get',
+            where : data.field,
+            page : {
+              curr : 1
+            }
+          });
+          return false;
+        });
+
+
       //工具条事件
       table.on('tool(data-table)', function(obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
         var data = obj.data; //获得当前行数据
@@ -147,8 +165,8 @@
           // TODO 更新 删除
           $.ajax({
             type: "post",// 提交的http方法
-            url: "/back/carousel/update/do", // 提交到后端的接口
-            data: {carouselId: id, carouselStatus: status}, // 提交到后端的数据
+            url: "/back/admin/carousel/update/", // 提交到后端的接口
+            data: {id: id, status: status}, // 提交到后端的数据
             dataType: "json", // 后端返回的数据
             success: function (res) { // 后端成功返回数据之后的回调
               if (res.code === 200) {
@@ -161,9 +179,8 @@
           layer.confirm('真的删除吗?', function (index) {
             //向服务端发送删除指令
             $.ajax({
-              type: "post",// 提交的http方法
-              url: "/back/carousel/update/do", // 提交到后端的接口
-              data: {carouselId: data.carouselId, isDeleted: 1}, // 提交到后端的数据
+              type: "delete",// 提交的http方法
+              url: "/back/admin/carousel/delete/" + data.id, // 提交到后端的接口
               dataType: "json", // 后端返回的数据
               success: function (res) { // 后端成功返回数据之后的回调
                 if (res.code === 200) {
@@ -171,6 +188,7 @@
                   tableIns.reload();
                   obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
                   layer.close(index);
+
                 }
               }
             });
@@ -178,7 +196,7 @@
         } else if (layEvent === 'edit') { //编辑
           //do something
           // 需要打开编辑页面
-          x_admin_show('编辑轮播', '/back/carousel/update/page?id=' + data.carouselId, 800, 600)
+          x_admin_show('编辑轮播', '/back/admin/carousel/update?id=' + data.id, 800, 600)
 
         } else if (layEvent === 'LAYTABLE_TIPS') {
           layer.alert('Hi，头部工具栏扩展的右侧图标。');
@@ -198,12 +216,12 @@
           $(data).each(function () {
             ids.push(this.id);
           })
-          // TODO 批量删除
+
           // 发送异步数据执行删除
           layer.confirm('真的删除吗?', function (index) {
             $.ajax({
               type: "post",// 提交的http方法
-              url: "/back/carousel/delete/all", // 提交到后端的接口
+              url: "/back/admin/carousel/delete/all", // 提交到后端的接口
               data: {ids: ids}, // 提交到后端的数据
               dataType: "json", // 后端返回的数据
               success: function (res) { // 后端成功返回数据之后的回调

@@ -23,4 +23,14 @@ public class PictureService extends BaseService<PictureMapper, Picture> {
     public String uploadFile(MultipartFile file) {
         return FileUtil.uploadFile(file);
     }
+
+    /**
+     * 批量删除
+     *
+     * @param ids
+     * @return
+     */
+    public boolean deleteAll(String[] ids) {
+        return this.mapper.deleteAll(ids) > 0;
+    }
 }

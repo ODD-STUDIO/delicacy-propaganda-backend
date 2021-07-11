@@ -9,6 +9,7 @@ import com.odd.delicacy.util.PageUtil;
 import com.odd.delicacy.vo.PageVO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -56,6 +57,49 @@ public class PictureBackController {
         return ResponseBean.success(pictureService.findPage(pageInfo, picture));
     }
 
+
+    /**
+     * 跳转到更新页
+     *
+     * @param id
+     * @param model
+     * @return
+     */
+    @GetMapping("/update")
+    public String toUpdatePage(Long id, Model model) {
+        model.addAttribute("picture", pictureService.findById(id));
+        return "back/carousel/carousel-edit";
+    }
+
+    /**
+     * 更新图片
+     *
+     * @param picture
+     * @return
+     */
+    @PostMapping("/update")
+    @ResponseBody
+    public ResponseBean<Boolean> update(Picture picture) {
+        return ResponseBean.success(pictureService.update(picture));
+    }
+
+    /**
+     * 删除图片
+     *
+     * @param id
+     * @return
+     */
+    @DeleteMapping("/delete/{id}")
+    @ResponseBody
+    public ResponseBean<Boolean> delete(@PathVariable("id") Long id) {
+        return ResponseBean.success(pictureService.deleteById(id));
+    }
+
+    @PostMapping("/delete/all")
+    @ResponseBody
+    public ResponseBean<Boolean> deleteAll(@RequestParam(name = "ids[]") String[] ids) {
+        return ResponseBean.success(pictureService.deleteAll(ids));
+    }
 
     /**
      * 上传图片接口
