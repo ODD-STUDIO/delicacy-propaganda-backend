@@ -23,155 +23,142 @@
   <body>
     <div class="x-body">
         <form class="layui-form">
-          <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>用户名
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="username" name="username" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input">
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>收货人
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="username" name="username" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input">
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="phone" class="layui-form-label">
-                  <span class="x-red">*</span>手机
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="phone" name="phone" required="" lay-verify="phone"
-                  autocomplete="off" class="layui-input">
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>收货地址
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="username" name="username" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input">
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>配送物流
-              </label>
-              <div class="layui-input-inline">
-                  <select id="shipping" name="shipping" class="valid">
-                    <option value="shentong">申通物流</option>
-                    <option value="shunfeng">顺丰物流</option>
-                  </select>
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>支付方式
-              </label>
-              <div class="layui-input-inline">
-                  <select name="contrller">
-                    <option>支付方式</option>
-                    <option>支付宝</option>
-                    <option>微信</option>
-                    <option>货到付款</option>
-                  </select>
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="L_email" class="layui-form-label">
-                  <span class="x-red">*</span>发票抬头
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="L_email" name="email" required="" lay-verify="email"
-                  autocomplete="off" class="layui-input">
-              </div>
-              <div class="layui-form-mid layui-word-aux">
-                  <span class="x-red">*</span>
-              </div>
-          </div>
-          <div class="layui-form-item layui-form-text">
-              <label for="desc" class="layui-form-label">
-                  商品增加
-              </label>
-              <div class="layui-input-block">
-                  <table class="layui-table">
-                    <tbody>
-                      <tr>
-                        <td>haier海尔 BC-93TMPF 93升单门冰箱</div></td>
-                        <td>0.01</div></td>
-                        <td>984</div></td>
-                        <td>1</td>
-                        <td>删除</td>
-                      </tr>
-                      <tr>
-                        <td>haier海尔 BC-93TMPF 93升单门冰箱</div></td>
-                        <td>0.01</div></td>
-                        <td>984</div></td>
-                        <td>1</td>
-                        <td>删除</td>
-                      </tr>
-                    </tbody>
-                  </table>
-              </div>
-          </div>
-          <div class="layui-form-item layui-form-text">
-              <label for="desc" class="layui-form-label">
-                  描述
-              </label>
-              <div class="layui-input-block">
-                  <textarea placeholder="请输入内容" id="desc" name="desc" class="layui-textarea"></textarea>
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="L_repass" class="layui-form-label">
-              </label>
-              <button  class="layui-btn" lay-filter="add" lay-submit="">
-                  增加
-              </button>
-          </div>
-      </form>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class="x-red">*</span>轮播图分类
+                </label>
+                <div class="layui-input-inline">
+                    <select name="type">
+                        <option value="GOODS">GOODS</option>
+                        <option value="NEWS">NEWS</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class="x-red">*</span>关联ID
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text"  name="associateId" lay-verify="required"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class="x-red">*</span>轮播图状态
+                </label>
+                <div class="layui-input-inline">
+                <select name="status">
+                    <option value="0">显示</option>
+                    <option value="1">隐藏</option>
+                    <option value="2">首页显示</option>
+                </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label  class="layui-form-label">
+                    <span class="x-red">*</span>轮播排序
+                </label>
+                <div class="layui-input-inline">
+                    <input type="number" value="0"  name="orderNum" lay-verify="required"
+                           autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                    数字越大越靠前
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class="x-red"></span>轮播跳转地址
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text"  name="link"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label  class="layui-form-label">
+                    <span class="x-red">*</span>轮播图片
+                </label>
+                <div class="layui-input-inline">
+                    <div class="layui-upload-drag" id="up-btn">
+                        <i class="layui-icon"></i>
+                        <p>点击上传，或将图片拖拽到此处</p>
+                    </div>
+                    <input type="hidden"  name="url" required=""  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                </label>
+                <button  class="layui-btn" lay-filter="add" lay-submit="">
+                    增加
+                </button>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                </label>
+                <div class="layui-hide" id="thumb">
+                    <hr>
+                    <img src="" alt="上传成功后渲染" style="width: 600px">
+                </div>
+            </div>
+        </form>
     </div>
     <script>
-        layui.use(['form','layer'], function(){
+        layui.use(['form','layer','upload'], function () {
             $ = layui.jquery;
-          var form = layui.form
-          ,layer = layui.layer;
-        
-          //自定义验证规则
-          form.verify({
-            nikename: function(value){
-              if(value.length < 5){
-                return '昵称至少得5个字符啊';
-              }
-            }
-            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
-            ,repass: function(value){
-                if($('#L_pass').val()!=$('#L_repass').val()){
-                    return '两次密码不一致';
-                }
-            }
-          });
+            let form = layui.form,layer = layui.layer;
+            let upload = layui.upload;
 
-          //监听提交
-          form.on('submit(add)', function(data){
-            console.log(data);
-            //发异步，把数据提交给php
-            layer.alert("增加成功", {icon: 6},function () {
-                // 获得frame索引
-                var index = parent.layer.getFrameIndex(window.name);
-                //关闭当前frame
-                parent.layer.close(index);
+            //执行实例
+            let uploadInst = upload.render({
+                elem: '#up-btn', //绑定元素
+                url: '/back/admin/carousel/upload', //上传接口
+                accept: 'images',
+                done: function (res) {
+                    //上传完毕回调
+                    if (res.code === 200){
+                        layer.msg("上传成功")
+                        layui.$("#thumb").removeClass('layui-hide').find('img').attr('src', 'http://img.afblog.love/'+res.data);
+                        // 存放到隐藏域中，用于存放到数据库
+                        $("input[name=url]").val(res.data);
+                    }
+                },
+                error: function() {
+                    //请求异常回调
+                    layer.msg("上传失败！")
+                }
             });
-            return false;
-          });
-          
-          
+
+
+            //监听提交
+            form.on('submit(add)', function(data){
+                console.log(data.field);
+                //发异步，把数据提交给java
+                $.ajax({
+                    type: "post",// 提交的http方法
+                    url: "/back/admin/carousel/add", // 提交到后端的接口
+                    data: data.field, // 提交到后端的数据
+                    dataType: "json", // 后端返回的数据
+                    success: function (res) { // 后端成功返回数据之后的回调
+                        if (res.code === 200){
+                            layer.alert(res.msg, {icon: 6}, function () {
+
+                                // 获得frame索引
+                                var index = parent.layer.getFrameIndex(window.name);
+                                //关闭当前frame
+                                parent.layer.close(index);
+                                // 刷新父级的表格
+                                window.parent.location.reload()
+                            });
+                        }
+                    }
+                })
+                return false;
+            });
+
+
         });
     </script>
 

@@ -30,16 +30,25 @@ public class FileUtil {
 
         // 获取文件后缀名
         String suffixName = Objects.requireNonNull(file.getOriginalFilename()).substring(file.getOriginalFilename().lastIndexOf('.'));
-        String filePath = "http://img.afblog.love/data/images/" + path + "/";
+
         String fileName = timestamp + suffixName;
-        File dest = new File(filePath + fileName);
-        dest.mkdirs();
         try {
-            file.transferTo(dest);
-            return path + "/" + fileName;
+            if (FtpUtil.uploadFile(fileName, file.getInputStream())) {
+                return fileName;
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+//        File dest = new File(filePath + fileName);
+//        if (!dest.exists()) {
+//            dest.mkdirs();
+//        }
+//        try {
+//            file.transferTo(dest);
+//            return path + "/" + fileName;
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         return "";
     }

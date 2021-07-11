@@ -93,7 +93,7 @@
                 { type:'checkbox', fixed: 'left', style: 'height:50px'},
                 { field: 'id', width: '5%', title: 'ID', sort: true },
                 { field: 'url', width: '11%', title: '图片', style: 'height: 50px', templet: function (d) {
-                    return "<img src='"+d.url+"' width='200px'/>"
+                    return "<img src='"+'http://img.afblog.love/'+d.url+"' width='200px'/>"
                 } },
                 { field: 'associateId', width: '10%', title: '关联ID' },
                 { field: 'type', width: '7%', title: '图片类型' },

@@ -12,20 +12,32 @@
                picture
     </sql>
 
-<!--    <insert id="insert" parameterType="good">-->
-<!--        INSERT INTO good-->
-<!--            (good_name, good_desc, good_category_id,-->
-<!--                <if test="goodStatus != null">-->
-<!--                    good_status,-->
-<!--                </if>-->
-<!--             good_thumb, create_time)-->
-<!--        VALUES-->
-<!--            (#{goodName}, #{goodDesc}, #{goodCategory.id},-->
-<!--                <if test="goodStatus != null">-->
-<!--                    #{goodStatus},-->
-<!--                </if>-->
-<!--             #{goodThumb}, now())-->
-<!--    </insert>-->
+    <insert id="insert" parameterType="picture">
+        INSERT INTO picture
+            (associate_id, type, url,
+                <if test="status != null">
+                    status,
+                </if>
+                <if test="orderNum != null">
+                    order_num,
+                </if>
+                <if test="link != null and link != ''">
+                    link,
+                </if>
+               create_time)
+        VALUES
+            (#{associateId}, #{type}, #{url},
+                <if test="status != null">
+                    #{status},
+                </if>
+                <if test="orderNum != null">
+                    #{orderNum},
+                </if>
+                <if test="link != null and link != ''">
+                    #{link},
+                </if>
+                now())
+    </insert>
 
     <select id="findList" parameterType="Picture" resultType="Picture">
         <include refid="selectPicture"/>

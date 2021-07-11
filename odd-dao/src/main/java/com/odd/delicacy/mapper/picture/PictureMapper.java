@@ -20,4 +20,10 @@ public interface PictureMapper extends BaseMapper<Picture> {
 
     @Override
     int insert(Picture picture);
+
+    @Override
+    int update(Picture picture);
+
+    @Override
+    int deleteById(Long id);
 }

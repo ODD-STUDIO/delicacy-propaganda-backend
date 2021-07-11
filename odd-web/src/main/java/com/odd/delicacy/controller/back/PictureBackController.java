@@ -27,11 +27,16 @@ public class PictureBackController {
 
     private final PictureService pictureService;
 
+    /**
+     * 增加轮播图
+     *
+     * @param picture
+     * @return
+     */
     @ResponseBody
     @PostMapping("/add")
-    public ResponseBean<String> add() {
-
-        return null;
+    public ResponseBean<Boolean> add(Picture picture) {
+        return ResponseBean.success(pictureService.insert(picture));
     }
 
     /**
@@ -48,7 +53,7 @@ public class PictureBackController {
                                               @RequestParam(value = "page") int pageNum,
                                               Picture picture) {
         PageInfo<Picture> pageInfo = PageUtil.pageInfo(pageNum, pageSize);
-        return new ResponseBean<>(200, "", pictureService.findPage(pageInfo, picture));
+        return ResponseBean.success(pictureService.findPage(pageInfo, picture));
     }
 
 
