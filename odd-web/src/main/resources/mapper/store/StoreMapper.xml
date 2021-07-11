@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.odd.delicacy.mapper.store.StoreMapper">
+
+    <resultMap id="storeVO" type="com.odd.delicacy.entity.store.Store">
+        <id     property="id"         column="id"         />
+        <result property="store_name"   column="store_name"  />
+        <result property="store_opentime" column="store_opentime"/>
+        <result property="store_address"   column="store_address"  />
+        <result property="store_tele"  column="store_tele" />
+        <result property="is_conceal"  column="is_conceal" />
+        <result property="is_deleted"  column="is_deleted" />
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="select">
+        SELECT
+            id,
+            store_name,
+            store_opentime,
+            store_address,
+            store_tele,
+            is_conceal,
+            is_deleted,
+            create_time,
+            update_time
+        FROM
+            store_info
+    </sql>
+
+    <insert id="insert" parameterType="com.odd.delicacy.entity.store.Store">
+        INSERT INTO store_info
+            (   store_name,
+                store_opentime,
+                store_address,
+                store_tele,
+             <if test="is_conceal != null" >
+                 is_conceal
+             </if>
+                ,
+             <if test="is_deleted != null" >
+                 is_deleted
+             </if>
+                ,
+                create_time)
+        VALUES
+             (#{store_name},#{store_opentime},#{store_address},
+              <if test="is_conceal !=null" >#{is_conceal},</if>
+               <if test="is_deleted != null">#{is_deleted},</if>
+                now())
+        )
+    </insert>
+
+    <select id="findList" parameterType="com.odd.delicacy.entity.store.Store" resultMap="storeVO">
+        <include refid="select"/>
+        WHERE
+        <if test="store_name != null and store_name != ''">
+            store_name like concat(#{store_name}, '%') AND
+        </if>
+        is_deleted = 0
+    </select>
+
+    <update id="update" parameterType="com.odd.delicacy.entity.store.Store">
+        UPDATE store_info
+        <set>
+            <if test="store_name != null and store_name != ''">
+                store_name = #{store_name},
+            </if>
+            <if test="store_opentime != null and store_opentime != ''">
+                store_opentime = #{store_opentime},
+            </if>
+            <if test="store_address != null and store_address != ''">
+                store_address = #{store_address},
+            </if>
+            <if test="store_tele != null and store_tele != ''">
+                store_tele = #{store_tele},
+            </if>
+            <if test="is_conceal != null and is_conceal != ''">
+                is_conceal = #{is_conceal},
+            </if>
+            <if test="is_deleted != null and is_deleted != ''">
+                is_deleted = #{is_deleted},
+            </if>
+            update_time = now()
+        </set>
+    </update>
+
+    <update id="deleteById" parameterType="long">
+        UPDATE store_info
+        SET is_deleted = 1, update_time = now()
+        WHERE id = #{id}
+    </update>
+</mapper>
