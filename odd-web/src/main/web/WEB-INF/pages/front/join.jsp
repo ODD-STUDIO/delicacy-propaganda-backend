@@ -22,24 +22,24 @@
     <div class="head clearfix">
         <div class="logo"><a href=""><img src="${pageContext.request.contextPath}/static/front/images/logo.png" alt="黑茶"/></a></div>
         <ul class="nav clearfix">
-            <li><a href="index.jsp">首页<span>HOME</span></a></li>
-            <li><a href="about.jsp">关于我们<span>ABOUT</span></a></li>
-            <li><a href="product.jsp">产品简介<span>PRODUCT</span></a></li>
-            <li class="now"><a href="join.jsp">加盟说明<span>JOIN</span></a></li>
-            <li><a href="jstore.jsp">门店资讯<span>JSTORE</span></a></li>
-            <li><a href="news.jsp">新闻中心<span>NEWS</span></a></li>
-            <li><a href="contact.jsp">联系我们<span>CONTACT</span></a></li>
+            <li><a href="index">首页<span>HOME</span></a></li>
+            <li><a href="about">关于我们<span>ABOUT</span></a></li>
+            <li><a href="product">产品简介<span>PRODUCT</span></a></li>
+            <li class="now"><a href="join">加盟说明<span>JOIN</span></a></li>
+            <li><a href="jstore">门店资讯<span>JSTORE</span></a></li>
+            <li><a href="news">新闻中心<span>NEWS</span></a></li>
+            <li><a href="contact">联系我们<span>CONTACT</span></a></li>
         </ul>
         <div class="nav_m">
         	<span class="n_icon">&nbsp;</span>
             <ul>
-            	<li><a href="index.jsp">首页<span>HOME</span></a></li>
-                <li><a href="about.jsp">关于我们<span>ABOUT</span></a></li>
-                <li><a href="product.jsp">产品简介<span>PRODUCT</span></a></li>
-                <li class="now"><a href="join.jsp">加盟说明<span>JOIN</span></a></li>
-                <li><a href="jstore.jsp">门店资讯<span>JSTORE</span></a></li>
-                <li><a href="news.jsp">新闻中心<span>NEWS</span></a></li>
-                <li><a href="contact.jsp">联系我们<span>CONTACT</span></a></li>
+            	<li><a href="index">首页<span>HOME</span></a></li>
+                <li><a href="about">关于我们<span>ABOUT</span></a></li>
+                <li><a href="product">产品简介<span>PRODUCT</span></a></li>
+                <li class="now"><a href="join">加盟说明<span>JOIN</span></a></li>
+                <li><a href="jstore">门店资讯<span>JSTORE</span></a></li>
+                <li><a href="news">新闻中心<span>NEWS</span></a></li>
+                <li><a href="contact">联系我们<span>CONTACT</span></a></li>
             </ul>
         </div>
     </div>
