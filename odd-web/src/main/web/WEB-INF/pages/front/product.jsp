@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=utf-8" language="java" %>
+<%@ page contentType="text/html;charset=utf-8" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -212,7 +212,7 @@
                     </ul>
                 </div>
             </div>
-            <script language="javascript">
+            <script>
                 $(window).load(function () {
                     $('.flexslider').flexslider({
                         animation: "slide"
@@ -223,9 +223,7 @@
         </div>
     </div>
 </div>
-<script language="javascript">
 
-</script>
 <div style="text-align: center; position: fixed; bottom: 0; width: 100%; line-height: 150%; background: #f5f5f5; border-top: 1px solid #ddd;">
     <a style="color:blue" target="_blank" href=" https://ibaotu.com/ui/"> </a>
 </div>

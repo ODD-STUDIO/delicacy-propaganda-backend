@@ -15,7 +15,7 @@ public class PageUtil {
     /**
      * 构建普通分页对象
      *
-     * @param pageNum 当前页数，从 0 开始
+     * @param pageNum  当前页数，从 0 开始
      * @param pageSize 一页大小
      * @param <T>
      * @return
@@ -31,10 +31,10 @@ public class PageUtil {
     /**
      * 构建带排序的分页对象
      *
-     * @param pageNum 当前页数，从 0 开始
+     * @param pageNum  当前页数，从 0 开始
      * @param pageSize 一页大小
-     * @param column 排序字段
-     * @param order 排序规则：ASC 或 DESC
+     * @param column   排序字段
+     * @param order    排序规则：ASC 或 DESC
      * @param <T>
      * @return
      */
@@ -51,6 +51,6 @@ public class PageUtil {
         if ("desc".equalsIgnoreCase(order)) {
             return column + " DESC ";
         }
-            return column + " ASC ";
+        return column + " ASC ";
     }
 }

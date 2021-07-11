@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=utf-8" language="java" %>
+<%@ page contentType="text/html;charset=utf-8"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -22,6 +22,7 @@
             src="${pageContext.request.contextPath}/static/front/plugins/3d_gd/js/jquery.roundabout-1.0.min.js"></script>
     <script type="text/javascript"
             src="${pageContext.request.contextPath}/static/front/plugins/3d_gd/js/jquery.easing.1.3.js"></script>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/static/front/images/favicon.ico">
     <!--3d滚动-->
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/front/js/main.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/front/css/thems.css">
