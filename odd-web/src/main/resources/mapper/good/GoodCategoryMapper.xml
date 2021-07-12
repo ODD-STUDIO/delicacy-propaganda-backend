@@ -45,6 +45,12 @@
         is_deleted = 0
     </select>
 
+    <select id="findAllToFront" resultType="GoodCategory">
+        <include refid="selectGoodCategory"/>
+        WHERE
+            good_category_status != 2 AND is_deleted = 0
+    </select>
+
     <update id="update" parameterType="GoodCategory">
         UPDATE good_category
         <set>

@@ -31,6 +31,13 @@ public interface GoodCategoryMapper extends BaseMapper<GoodCategory> {
 
     int deleteAll(@Param("ids") String[] ids);
 
+    /**
+     * 查询状态没被屏蔽的分类名
+     *
+     * @return
+     */
+    List<GoodCategory> findAllToFront();
+
     @Override
     int deleteById(Long id);
 }

@@ -7,6 +7,8 @@ import com.odd.delicacy.util.FileUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 /**
  * @author Tanglinfeng
  * @date 2021/7/10 11:04
@@ -32,5 +34,9 @@ public class PictureService extends BaseService<PictureMapper, Picture> {
      */
     public boolean deleteAll(String[] ids) {
         return this.mapper.deleteAll(ids) > 0;
+    }
+
+    public List<Picture> findCarouselByIdAndType(Long id, String type) {
+        return this.mapper.findCarouselByIdAndType(id, type);
     }
 }

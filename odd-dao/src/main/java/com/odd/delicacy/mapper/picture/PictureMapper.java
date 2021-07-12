@@ -32,4 +32,6 @@ public interface PictureMapper extends BaseMapper<Picture> {
     int deleteById(Long id);
 
     int deleteAll(@Param("ids") String[] ids);
+
+    List<Picture> findCarouselByIdAndType(@Param("id") Long id, @Param("type") String type);
 }
