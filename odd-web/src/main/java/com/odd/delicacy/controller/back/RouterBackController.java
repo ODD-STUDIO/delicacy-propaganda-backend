@@ -1,12 +1,14 @@
 package com.odd.delicacy.controller.back;
 
 import com.odd.delicacy.api.ResponseBean;
+import com.odd.delicacy.entity.join.JoinInfo;
 import com.odd.delicacy.entity.picture.Picture;
 import com.odd.delicacy.service.good.GoodCategoryService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -80,7 +82,9 @@ public class RouterBackController {
     }
 
     @GetMapping("/join")
-    public String toJoin(){
-        return "back/join";
-    }
+    public String toJoin(){ return "back/join/join-list"; }
+
+    @GetMapping("/join/add")
+    public String toJoinAdd(){ return "back/join/join-add"; }
+
 }

@@ -23,13 +23,24 @@
 
     <select id="findList" parameterType="com.odd.delicacy.entity.join.JoinInfo" resultMap="JoinVO">
         SELECT
-            j.id, j.franchisees_name, j.franchisees_address, j.franchisees_phonenum, j.franchisees_reason
+            j.id, j.franchisees_name, j.franchisees_address, j.franchisees_phonenum, j.franchisees_reason, j.create_time, j.update_time
         FROM
             `join` j
         WHERE
         <if test="franchiseesName != null and franchiseesName != ''">
-            j.franchisees_name like concat(#{goodName}, '%') AND
+            j.franchisees_name like concat(#{franchiseesName}, '%') AND
         </if>
+            j.is_deleted = 0
+    </select>
+
+    <select id="findById" parameterType="long" resultType="com.odd.delicacy.entity.join.JoinInfo">
+        SELECT
+            j.id, j.franchisees_name, j.franchisees_address, j.franchisees_phonenum, j.franchisees_reason, j.create_time, j.update_time
+        FROM
+            `join` j
+        where
+            j.id = #{id}
+        and
             j.is_deleted = 0
     </select>
 
@@ -37,7 +48,7 @@
         UPDATE `join`
         <set>
             <if test="franchiseesName != null and franchiseesName != ''">
-                franchisees_name = #{franchiseesName},+++
+                franchisees_name = #{franchiseesName},
             </if>
             <if test="franchiseesAddress != null and franchiseesAddress != ''">
                 franchisees_address = #{franchiseesAddress},
@@ -49,6 +60,8 @@
                 franchisees_reason = #{franchiseesReason},
             </if>
                 update_time = now()
+            Where
+                id = #{id}
         </set>
     </update>
 
@@ -57,4 +70,13 @@
         SET is_deleted = 1, update_time = now()
         WHERE id = #{id}
     </update>
+    
+    <update id="deleteAll" parameterType="long">
+        update `join` set is_deleted = 1
+        where id in
+        <foreach collection="ids" open="(" separator="," close=")" item="id">
+            #{id}
+        </foreach>
+    </update>
+    
 </mapper>

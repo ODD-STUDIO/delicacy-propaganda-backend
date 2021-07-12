@@ -12,4 +12,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class JoinService extends BaseService<JoinMapper, JoinInfo> {
 
+    public JoinInfo findById(Long id){
+        if(id <= 0){
+            return null;
+        }
+
+        return mapper.findById(id);
+    }
+
+    public boolean deleteAll(String[] ids){
+        return mapper.deleteAll(ids) > 0;
+    }
 }

@@ -27,4 +27,36 @@ public class JoinInfo extends BaseEntity<JoinInfo> {
     private String franchiseesAddress;
 
     private String franchiseesReason;
+
+    public String getFranchiseesName() {
+        return franchiseesName;
+    }
+
+    public void setFranchiseesName(String franchiseesName) {
+        this.franchiseesName = franchiseesName;
+    }
+
+    public String getFranchiseesPhonenum() {
+        return franchiseesPhonenum;
+    }
+
+    public void setFranchiseesPhonenum(String franchiseesPhonenum) {
+        this.franchiseesPhonenum = franchiseesPhonenum;
+    }
+
+    public String getFranchiseesAddress() {
+        return franchiseesAddress;
+    }
+
+    public void setFranchiseesAddress(String franchiseesAddress) {
+        this.franchiseesAddress = franchiseesAddress;
+    }
+
+    public String getFranchiseesReason() {
+        return franchiseesReason;
+    }
+
+    public void setFranchiseesReason(String franchiseesReason) {
+        this.franchiseesReason = franchiseesReason;
+    }
 }

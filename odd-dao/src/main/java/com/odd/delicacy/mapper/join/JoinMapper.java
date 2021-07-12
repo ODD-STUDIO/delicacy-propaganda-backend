@@ -21,6 +21,12 @@ public interface JoinMapper extends BaseMapper<JoinInfo> {
     int insert(JoinInfo joinInfo);
 
     @Override
+    JoinInfo findById(Long id);
+
+//    @Override
+//    JoinInfo findOne(JoinInfo entity);
+
+    @Override
     List<JoinInfo> findList(JoinInfo joinInfo);
 
     @Override
@@ -28,4 +34,6 @@ public interface JoinMapper extends BaseMapper<JoinInfo> {
 
     @Override
     int deleteById(@Param("id") Long id);
+
+    int deleteAll(@Param("ids") String[] ids);
 }
