@@ -80,16 +80,23 @@ public class RouterBackController {
     }
 
     @GetMapping("/stores")
-    public String toStores(){ return "back/stores/stores-list"; }
+    public String toStores() {
+        return "back/stores/stores-list";
+    }
 
     @GetMapping("/stores/add")
     public String toStoresAdd() {
         return "back/stores/stores-add";
     }
 
-}
+
     @GetMapping("/join")
-    public String toJoin(){ return "back/join/join-list"; }
+    public String toJoin() {
+        return "back/join/join-list";
+    }
 
     @GetMapping("/join/add")
-    public String toJoinAdd(){ return "back/join/join-add"; }
+    public String toJoinAdd() {
+        return "back/join/join-add";
+    }
+}
