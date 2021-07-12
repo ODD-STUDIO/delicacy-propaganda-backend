@@ -1,5 +1,6 @@
 package com.odd.delicacy.base;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.odd.delicacy.vo.PageVO;
@@ -17,6 +18,26 @@ public abstract class BaseService<M extends BaseMapper<T>, T extends BaseEntity<
 
     @Autowired
     protected M mapper;
+
+    /**
+     * 根据 Id 查询
+     *
+     * @param id
+     * @return
+     */
+    public T findById(Long id) {
+        return mapper.findById(id);
+    }
+
+    /**
+     * 查询单条记录
+     *
+     * @param entity
+     * @return
+     */
+    public T findOne(T entity) {
+        return mapper.findOne(entity);
+    }
 
     /**
      * 查询多条记录
@@ -37,9 +58,7 @@ public abstract class BaseService<M extends BaseMapper<T>, T extends BaseEntity<
      */
     public PageVO<T> findPage(PageInfo<T> pageInfo, T entity) {
         PageHelper.startPage(pageInfo.getPageNum(), pageInfo.getPageSize());
-        System.out.println("1");
         PageInfo<T> page = new PageInfo<>(mapper.findList(entity));
-        System.out.println("2");
         // 构建 PageVO 返回对象
         return new PageVO<>(page.getTotal(), page.getPages(), page.getPageNum(), page.getPageSize(), page.getList());
     }

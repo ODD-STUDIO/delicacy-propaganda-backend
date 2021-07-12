@@ -55,24 +55,16 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6b8;</i>
-                    <cite>会员管理</cite>
+                    <cite>轮播管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="member-list.html">
+                        <a _href="/back/admin/carousel">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>会员列表</cite>
-                            
+                            <cite>轮播列表</cite>
                         </a>
                     </li >
-                    <li>
-                        <a _href="member-del.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>会员删除</cite>
-                            
-                        </a>
-                    </li>
                     <li>
                         <a href="javascript:;">
                             <i class="iconfont">&#xe70b;</i>
@@ -130,7 +122,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="back/join">
+                        <a _href="/back/admin/join">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>申请加盟列表</cite>
                         </a>
@@ -261,14 +253,20 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6b4;</i>
-                    <cite>图标字体</cite>
+                    <cite>商品管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="unicode.html">
+                        <a _href="/back/admin/goods">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>图标对应字体</cite>
+                            <cite>商品列表</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="/back/admin/goods/category">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>商品分类</cite>
                         </a>
                     </li>
                 </ul>

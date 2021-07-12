@@ -63,7 +63,6 @@
                         <a _href="/back/admin/carousel">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>轮播列表</cite>
-                            
                         </a>
                     </li >
                     <li>
@@ -123,7 +122,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="back/join">
+                        <a _href="/back/admin/join">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>申请加盟列表</cite>
                         </a>

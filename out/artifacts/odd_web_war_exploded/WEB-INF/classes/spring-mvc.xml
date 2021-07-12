@@ -23,6 +23,13 @@
     <mvc:resources location="/static/back/" mapping="/back/**"/>
     <mvc:resources location="/static/front/" mapping="/front/**"/>
 
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+        <!--设置文件大小 5M(5*1024*1024)-->
+        <property value="5242880" name="maxUploadSize"/>
+        <!--编码-->
+        <property value="utf-8" name="defaultEncoding"/>
+    </bean>
+
     <!--3.开启注解驱动-->
     <mvc:annotation-driven/>
 

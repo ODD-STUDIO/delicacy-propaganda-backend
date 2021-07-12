@@ -4,7 +4,7 @@
 
 <mapper namespace="com.odd.delicacy.mapper.good.GoodMapper">
 
-    <resultMap id="GoodVO" type="com.odd.delicacy.entity.good.Good">
+    <resultMap id="GoodVO" type="Good">
         <id     property="id"         column="id"         />
         <result property="goodName"   column="good_name"  />
         <result property="goodStatus" column="good_status"/>
@@ -12,10 +12,10 @@
         <result property="goodThumb"  column="good_thumb" />
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
-        <association property="goodCategory" javaType="com.odd.delicacy.entity.good.GoodCategory" resultMap="GoodCategoryVO"/>
+        <association property="goodCategory" javaType="GoodCategory" resultMap="GoodCategoryVO"/>
     </resultMap>
 
-    <resultMap id="GoodCategoryVO" type="com.odd.delicacy.entity.good.GoodCategory">
+    <resultMap id="GoodCategoryVO" type="GoodCategory">
         <id     property="id"                   column="category_id"         />
         <result property="goodCategoryName"     column="good_category_name"  />
         <result property="goodCategoryStatus"   column="good_category_status"/>
@@ -23,12 +23,18 @@
 
     <sql id="selectGood">
         SELECT
-               g.id, g.good_name, g.good_status, g.good_desc, g.good_thumb, gc.id as category_id, gc.good_category_name, gc.good_category_status
+               g.id, g.good_name, g.good_status, g.good_desc, g.good_thumb, gc.id as category_id, gc.good_category_name, gc.good_category_status,
+               g.create_time, g.update_time
         FROM
                good g LEFT JOIN good_category gc ON g.good_category_id = gc.id
     </sql>
 
-    <insert id="insert" parameterType="com.odd.delicacy.entity.good.Good">
+    <select id="findById" parameterType="long" resultMap="GoodVO">
+        <include refid="selectGood"/>
+        WHERE g.id = #{id} AND g.is_deleted = 0
+    </select>
+
+    <insert id="insert" parameterType="good">
         INSERT INTO good
             (good_name, good_desc, good_category_id,
                 <if test="goodStatus != null">
@@ -43,19 +49,22 @@
              #{goodThumb}, now())
     </insert>
 
-    <select id="findList" parameterType="com.odd.delicacy.entity.good.Good" resultMap="GoodVO">
+    <select id="findList" parameterType="Good" resultMap="GoodVO">
         <include refid="selectGood"/>
         WHERE
         <if test="goodName != null and goodName != ''">
             g.good_name like concat(#{goodName}, '%') AND
         </if>
-        <if test="goodCategory != null">
+        <if test="goodCategory != null and goodCategory != ''">
             g.good_category_id = #{goodCategory.id} AND
+        </if>
+        <if test="goodStatus != null and goodStatus != ''">
+            g.good_status = #{goodStatus} AND
         </if>
         g.is_deleted = 0
     </select>
 
-    <update id="update" parameterType="com.odd.delicacy.entity.good.Good">
+    <update id="update" parameterType="Good">
         UPDATE good
         <set>
             <if test="goodName != null and goodName != ''">
@@ -70,11 +79,12 @@
             <if test="goodCategory != null">
                 good_category_id = #{goodCategory.id},
             </if>
-            <if test="goodStatus != null and goodStatus != ''">
+            <if test="goodStatus != null">
                 good_status = #{goodStatus},
             </if>
             update_time = now()
         </set>
+        WHERE id = #{id}
     </update>
 
     <update id="deleteById" parameterType="long">
@@ -82,4 +92,13 @@
         SET is_deleted = 1, update_time = now()
         WHERE id = #{id}
     </update>
+
+    <update id="deleteAll">
+        UPDATE good SET is_deleted = 1
+        WHERE id in
+        <foreach collection="ids" open="(" separator="," close=")" item="id">
+            #{id}
+        </foreach>
+    </update>
+
 </mapper>
