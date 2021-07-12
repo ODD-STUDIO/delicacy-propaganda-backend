@@ -54,10 +54,12 @@ public class FtpUtil {
         try {
             loginFtp();
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
-            ftpClient.storeFile(fileName, in);
+            // 开启被动模式
+            ftpClient.enterLocalPassiveMode();
+            boolean flag = ftpClient.storeFile(fileName, in);
             in.close();
             ftpClient.logout();
-            return true;
+            return flag;
         } catch (Exception e) {
             e.printStackTrace();
             LogUtil.error(log, "上传失败", fileName);

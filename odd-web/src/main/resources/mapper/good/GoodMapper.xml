@@ -23,10 +23,16 @@
 
     <sql id="selectGood">
         SELECT
-               g.id, g.good_name, g.good_status, g.good_desc, g.good_thumb, gc.id as category_id, gc.good_category_name, gc.good_category_status
+               g.id, g.good_name, g.good_status, g.good_desc, g.good_thumb, gc.id as category_id, gc.good_category_name, gc.good_category_status,
+               g.create_time, g.update_time
         FROM
                good g LEFT JOIN good_category gc ON g.good_category_id = gc.id
     </sql>
+
+    <select id="findById" parameterType="long" resultMap="GoodVO">
+        <include refid="selectGood"/>
+        WHERE g.id = #{id} AND g.is_deleted = 0
+    </select>
 
     <insert id="insert" parameterType="good">
         INSERT INTO good
@@ -49,8 +55,11 @@
         <if test="goodName != null and goodName != ''">
             g.good_name like concat(#{goodName}, '%') AND
         </if>
-        <if test="goodCategory != null">
+        <if test="goodCategory != null and goodCategory != ''">
             g.good_category_id = #{goodCategory.id} AND
+        </if>
+        <if test="goodStatus != null and goodStatus != ''">
+            g.good_status = #{goodStatus} AND
         </if>
         g.is_deleted = 0
     </select>
@@ -70,11 +79,12 @@
             <if test="goodCategory != null">
                 good_category_id = #{goodCategory.id},
             </if>
-            <if test="goodStatus != null and goodStatus != ''">
+            <if test="goodStatus != null">
                 good_status = #{goodStatus},
             </if>
             update_time = now()
         </set>
+        WHERE id = #{id}
     </update>
 
     <update id="deleteById" parameterType="long">
@@ -82,4 +92,13 @@
         SET is_deleted = 1, update_time = now()
         WHERE id = #{id}
     </update>
+
+    <update id="deleteAll">
+        UPDATE good SET is_deleted = 1
+        WHERE id in
+        <foreach collection="ids" open="(" separator="," close=")" item="id">
+            #{id}
+        </foreach>
+    </update>
+
 </mapper>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.odd.delicacy.mapper.good.GoodCategoryMapper">
+
+
+    <sql id="selectGoodCategory">
+        SELECT
+               id, good_category_name, good_category_status, create_time, update_time
+        FROM
+               good_category
+    </sql>
+
+    <insert id="insert" parameterType="GoodCategory">
+        INSERT INTO good_category
+            (good_category_name,
+                <if test="goodCategoryStatus != null and goodCategoryStatus != ''">
+                    good_category_status,
+                </if>
+             create_time)
+        VALUES
+            (#{goodCategoryStatus},
+                <if test="goodCategoryStatus != null and goodCategoryStatus != ''">
+                    #{goodCategoryStatus},
+                </if>
+            now())
+    </insert>
+
+    <select id="findList" parameterType="GoodCategory" resultType="GoodCategory">
+        <include refid="selectGoodCategory"/>
+        WHERE
+        <if test="goodCategoryName != null and goodCategoryName != ''">
+            good_category_name like concat(#{goodCategoryName}, '%') AND
+        </if>
+        <if test="goodCategoryStatus != null and goodCategoryStatus != ''">
+            good_category_status = #{goodCategoryStatus} AND
+        </if>
+        is_deleted = 0
+    </select>
+
+    <update id="update" parameterType="GoodCategory">
+        UPDATE good_category
+        <set>
+            <if test="goodCategoryStatus != null">
+                good_category_status = #{goodCategoryStatus},
+            </if>
+            <if test="goodCategoryName != null and goodCategoryName != ''">
+                good_category_name = #{goodCategoryName},
+            </if>
+            update_time = now()
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="deleteById" parameterType="long">
+        UPDATE good_category
+        SET is_deleted = 1, update_time = now()
+        WHERE id = #{id}
+    </update>
+</mapper>

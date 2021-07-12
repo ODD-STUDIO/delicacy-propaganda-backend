@@ -63,7 +63,7 @@
             <if test="orderNum != null and orderNum != ''">
                 order_num = #{orderNum},
             </if>
-            <if test="status != null and status != ''">
+            <if test="status != null">
                 status = #{status},
             </if>
             <if test="type != null and type != ''">

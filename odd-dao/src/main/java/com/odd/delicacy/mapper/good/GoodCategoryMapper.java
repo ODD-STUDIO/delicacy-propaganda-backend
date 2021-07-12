@@ -2,31 +2,32 @@ package com.odd.delicacy.mapper.good;
 
 import com.odd.delicacy.base.BaseMapper;
 import com.odd.delicacy.entity.good.Good;
+import com.odd.delicacy.entity.good.GoodCategory;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * @author Tanglinfeng
- * @date 2021/7/5 18:13
+ * @date 2021/7/11 19:35
  */
 @Mapper
 @Repository
-public interface GoodMapper extends BaseMapper<Good> {
+public interface GoodCategoryMapper extends BaseMapper<GoodCategory> {
 
     @Override
-    int insert(Good good);
+    GoodCategory findById(Long id);
 
     @Override
-    List<Good> findList(Good good);
+    List<GoodCategory> findList(GoodCategory entity);
 
     @Override
-    int update(Good good);
+    int insert(GoodCategory entity);
 
     @Override
-    int deleteById(@Param("id") Long id);
+    int update(GoodCategory entity);
 
-    int deleteAll(@Param("ids") String[] ids);
+    @Override
+    int deleteById(Long id);
 }
