@@ -33,4 +33,16 @@
     <!--3.开启注解驱动-->
     <mvc:annotation-driven/>
 
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--要拦截的路径-->
+            <mvc:mapping path="/back/admin/**"/>
+            <!--不拦截的路径-->
+            <mvc:exclude-mapping path="/back/admin/login"/>
+            <mvc:exclude-mapping path="/back/admin/auth"/>
+            <bean class="com.odd.delicacy.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>
