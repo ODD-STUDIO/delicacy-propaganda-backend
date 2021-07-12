@@ -2,42 +2,44 @@ package com.odd.delicacy.controller.front;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
+@RequestMapping("/")
 public class RouterFrontController {
 
-    @GetMapping({"/","index"})
+    @GetMapping({"", "index"})
     public String index() {
         return "front/index";
     }
 
-    @GetMapping("/about")
+    @GetMapping("about")
     public String about() {
         return "front/about";
     }
 
-    @GetMapping("/product")
+    @GetMapping("product")
     public String product() {
         return "front/product";
     }
 
-    @GetMapping("/join")
+    @GetMapping("join")
     public String join() {
         return "front/join";
     }
 
-    @GetMapping("/jstore")
-    public String jStore() {
-        return "front/jstore";
+    @GetMapping("store")
+    public String store() {
+        return "front/store";
     }
 
-    @GetMapping("/news")
+    @GetMapping("news")
     public String news() {
         return "front/news";
     }
 
-    @GetMapping("/contact")
+    @GetMapping("contact")
     public String contact() {
         return "front/contact";
     }

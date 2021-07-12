@@ -54,7 +54,7 @@
             <li><a href="about">关于我们<span>ABOUT</span></a></li>
             <li><a href="product">产品简介<span>PRODUCT</span></a></li>
             <li><a href="join">加盟说明<span>JOIN</span></a></li>
-            <li><a href="jstore">门店资讯<span>JSTORE</span></a></li>
+            <li><a href="store">门店资讯<span>STORE</span></a></li>
             <li><a href="news">新闻中心<span>NEWS</span></a></li>
             <li><a href="contact">联系我们<span>CONTACT</span></a></li>
         </ul>
@@ -65,7 +65,7 @@
                 <li><a href="about">关于我们<span>ABOUT</span></a></li>
                 <li><a href="product">产品简介<span>PRODUCT</span></a></li>
                 <li><a href="join">加盟说明<span>JOIN</span></a></li>
-                <li><a href="jstore">门店资讯<span>JSTORE</span></a></li>
+                <li><a href="store">门店资讯<span>STORE</span></a></li>
                 <li><a href="news">新闻中心<span>NEWS</span></a></li>
                 <li><a href="contact">联系我们<span>CONTACT</span></a></li>
             </ul>
@@ -90,17 +90,18 @@
             </ul>
         </div>
     </div>
+    <%--not implemented yet--%>
     <div class="slider slider_sj">
         <div class="flexslider">
             <ul class="slides">
                 <li>
-                    <img src="static/front/upload/shouji.jpg" alt=""/>
+                    <img src="${pageContext.request.contextPath}static/front/upload/shouji.jpg" alt=""/>
                 </li>
                 <li>
-                    <img src="static/front/upload/shouji.jpg" alt=""/>
+                    <img src="${pageContext.request.contextPath}static/front/upload/shouji.jpg" alt=""/>
                 </li>
                 <li>
-                    <img src="static/front/upload/shouji.jpg" alt=""/>
+                    <img src="${pageContext.request.contextPath}static/front/upload/shouji.jpg" alt=""/>
                 </li>
             </ul>
         </div>
@@ -112,13 +113,13 @@
     <div class="gy_m">
         <div id="featured-area">
             <ul>
-                <li><a href=""><img src="${pageContext.request.contextPath}/static/front/upload/pic4.jpg" alt=""/></a>
+                <li><a href="store"><img src="${pageContext.request.contextPath}/static/front/upload/pic4.jpg" alt=""/></a>
                 </li>
-                <li><a href=""><img src="${pageContext.request.contextPath}/static/front/upload/pic4.jpg" alt=""/></a>
+                <li><a href="store"><img src="${pageContext.request.contextPath}/static/front/upload/pic4.jpg" alt=""/></a>
                 </li>
-                <li><a href=""><img src="${pageContext.request.contextPath}/static/front/upload/pic4.jpg" alt=""/></a>
+                <li><a href="store"><img src="${pageContext.request.contextPath}/static/front/upload/pic4.jpg" alt=""/></a>
                 </li>
-                <li><a href=""><img src="${pageContext.request.contextPath}/static/front/upload/pic4.jpg" alt=""/></a>
+                <li><a href="store"><img src="${pageContext.request.contextPath}/static/front/upload/pic4.jpg" alt=""/></a>
                 </li>
             </ul>
         </div>
@@ -254,10 +255,10 @@
                         能自觉维护【黑茶】品牌形象，具有良好的投资心态和进取意识。</p>
                 </div>
                 <ul class="dd_mr clearfix">
-                    <li><a href="">加盟条件</a></li>
-                    <li><a href="">加盟优势</a></li>
-                    <li><a href="">加盟流程</a></li>
-                    <li><a href="">申请加盟表</a></li>
+                    <li><a href="join">加盟条件</a></li>
+                    <li><a href="join">加盟优势</a></li>
+                    <li><a href="join">加盟流程</a></li>
+                    <li><a href="join">申请加盟表</a></li>
                 </ul>
             </div>
         </dd>
@@ -270,11 +271,11 @@
         <a href=""><img src="${pageContext.request.contextPath}/static/front/images/icon6.png" alt=""/></a>
         <p>加盟热线：0755-82369636</p>
         <div class="if_nav">
-            <a href="">关于我们</a>
-            <a href="">联系我们</a>
-            <a href="">在线留言</a>
-            <a href="">加入我们</a>
-            <a href="">门店资讯</a>
+            <a href="about">关于我们</a>
+            <a href="contact">联系我们</a>
+            <a href="contact">在线留言</a>
+            <a href="join">加入我们</a>
+            <a href="store">门店资讯</a>
         </div>
     </div>
 </div>
