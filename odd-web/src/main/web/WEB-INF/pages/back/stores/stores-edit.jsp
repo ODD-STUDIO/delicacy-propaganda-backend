@@ -29,7 +29,7 @@
                     <span class="x-red">*</span>店铺名称
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text"  name="store_name" value="${store.store_name}" autocomplete="off" class="layui-input">
+                    <input type="text"  name="storeName" value="${store.storeName}" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -37,7 +37,7 @@
                     <span class="x-red">*</span>店铺营业时间
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text"  name="store_opentime" value="${store.store_opentime}" autocomplete="off" class="layui-input">
+                    <input type="text"  name="storeOpentime" value="${store.storeOpentime}" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -45,7 +45,7 @@
                     <span class="x-red">*</span>店铺地址
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text"  name="store_address" value="${store.store_address}" autocomplete="off" class="layui-input">
+                    <input type="text"  name="storeAddress" value="${store.storeAddress}" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -53,7 +53,7 @@
                     <span class="x-red">*</span>店铺联系方式
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text"  name="store_tele" value="${store.store_tele}" autocomplete="off" class="layui-input">
+                    <input type="text"  name="storeTele" value="${store.storeTele}" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -61,9 +61,9 @@
                     <span class="x-red">*</span>店铺状态
                 </label>
                 <div class="layui-input-inline">
-                    <select name="is_conceal">
-                        <option value="0" ${store.is_conceal == 0 ? 'selected' : ''}>显示</option>
-                        <option value="1" ${store.is_conceal == 1 ? 'selected' : ''}>隐藏</option>
+                    <select name="isConceal">
+                        <option value="0" ${store.isConceal == 0 ? 'selected' : ''}>显示</option>
+                        <option value="1" ${store.isConceal == 1 ? 'selected' : ''}>隐藏</option>
                     </select>
                 </div>
             </div>

@@ -6,12 +6,12 @@
 
     <resultMap id="storeVO" type="com.odd.delicacy.entity.store.Store">
         <id     property="id"         column="id"         />
-        <result property="store_name"   column="store_name"  />
-        <result property="store_opentime" column="store_opentime"/>
-        <result property="store_address"   column="store_address"  />
-        <result property="store_tele"  column="store_tele" />
-        <result property="is_conceal"  column="is_conceal" />
-        <result property="is_deleted"  column="is_deleted" />
+        <result property="storeName"   column="store_name"  />
+        <result property="storeOpentime" column="store_opentime"/>
+        <result property="storeAddress"   column="store_address"  />
+        <result property="storeTele"  column="store_tele" />
+        <result property="isConceal"  column="is_conceal" />
+        <result property="isDeleted"  column="is_deleted" />
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
     </resultMap>
@@ -37,17 +37,17 @@
                 store_opentime,
                 store_address,
                 store_tele,
-             <if test="is_conceal != null" >
+             <if test="isConceal != null" >
                  is_conceal,
              </if>
-             <if test="is_deleted != null" >
+             <if test="isDeleted != null" >
                  is_deleted,
              </if>
                 create_time)
         VALUES
-             (#{store_name},#{store_opentime},#{store_address},#{store_tele},
-              <if test="is_conceal !=null" >#{is_conceal},</if>
-               <if test="is_deleted != null">#{is_deleted},</if>
+             (#{storeName},#{storeOpentime},#{storeAddress},#{storeTele},
+              <if test="isConceal !=null" >#{isConceal},</if>
+               <if test="isDeleted != null">#{isDeleted},</if>
                 now())
 
     </insert>
@@ -55,8 +55,8 @@
     <select id="findList" parameterType="com.odd.delicacy.entity.store.Store" resultMap="storeVO">
         <include refid="select"/>
         WHERE
-        <if test="is_conceal != null and is_conceal!= ''">
-            is_conceal = #{is_conceal} AND
+        <if test="isConceal != null">
+            is_conceal = #{isConceal} AND
         </if>
         is_deleted = 0
     </select>
@@ -64,23 +64,23 @@
     <update id="update" parameterType="com.odd.delicacy.entity.store.Store">
         UPDATE store_info
         <set>
-            <if test="store_name != null and store_name != ''">
-                store_name = #{store_name},
+            <if test="storeName != null and storeName != ''">
+                store_name = #{storeName},
             </if>
-            <if test="store_opentime != null and store_opentime != ''">
-                store_opentime = #{store_opentime},
+            <if test="storeOpentime != null and storeOpentime != ''">
+                store_opentime = #{storeOpentime},
             </if>
-            <if test="store_address != null and store_address != ''">
-                store_address = #{store_address},
+            <if test="storeAddress != null and storeAddress != ''">
+                store_address = #{storeAddress},
             </if>
-            <if test="store_tele != null and store_tele != ''">
-                store_tele = #{store_tele},
+            <if test="storeTele != null and storeTele != ''">
+                store_tele = #{storeTele},
             </if>
-            <if test="is_conceal != null">
-                is_conceal = #{is_conceal},
+            <if test="isConceal != null">
+                is_conceal = #{isConceal},
             </if>
-            <if test="is_deleted != null and is_deleted != ''">
-                is_deleted = #{is_deleted},
+            <if test="isDeleted != null">
+                is_deleted = #{isDeleted},
             </if>
             update_time = now()
 

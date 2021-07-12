@@ -28,7 +28,7 @@
                     <span class="x-red">* </span>店铺名称
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text"  name="store_name" lay-verify="required"
+                    <input type="text"  name="storeName" lay-verify="required"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -37,7 +37,7 @@
                     <span class="x-red">*</span>店铺营业时间
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text"  name="store_opentime" lay-verify="required"
+                    <input type="text"  name="storeOpentime" lay-verify="required"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     <span class="x-red">*</span>店铺地址
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text"  name="store_address" lay-verify="required"
+                    <input type="text"  name="storeAddress" lay-verify="required"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -55,7 +55,7 @@
                     <span class="x-red">*</span>店铺电话
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text"  name="store_tele" lay-verify="required"
+                    <input type="text"  name="storeTele" lay-verify="required"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -64,7 +64,7 @@
                     <span class="x-red">*</span>店铺是否隐藏状态
                 </label>
                 <div class="layui-input-inline">
-                <select name="is_conceal">
+                <select name="isConceal">
                     <option value="0">显示</option>
                     <option value="1">隐藏</option>
                 </select>

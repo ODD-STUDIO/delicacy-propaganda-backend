@@ -38,7 +38,7 @@
               <span class="x-red"></span>店铺隐藏状态
             </label>
             <div class="layui-input-inline">
-              <select name="is_conceal">
+              <select name="isConceal">
                 <option value="0">显示</option>
                 <option value="1">隐藏</option>
               </select>
@@ -89,20 +89,20 @@
               cols: [[
                 { type:'checkbox', fixed: 'left', style: 'height:50px'},
                 { field: 'id', width: '5%', title: 'ID', sort: true },
-                { field: 'store_name', width: '11%', title: '店铺名称', style: 'height: 50px' },
-                { field: 'store_opentime', width: '10%', title: '店铺营业时间' },
-                { field: 'store_address', width: '10%', title: '店铺地址' },
-                { field: 'store_tele', width: '10%', title: '联系方式' },
-                { field: 'is_conceal', width: '7%', title: '显示状态',templet:function (d){
+                { field: 'storeName', width: '11%', title: '店铺名称', style: 'height: 50px' },
+                { field: 'storeOpentime', width: '10%', title: '店铺营业时间' },
+                { field: 'storeAddress', width: '10%', title: '店铺地址' },
+                { field: 'storeTele', width: '10%', title: '联系方式' },
+                { field: 'isConceal', width: '7%', title: '显示状态',templet:function (d){
                     let text;
                     let clazz;
-                    console.log(d.is_conceal)
-                    console.log(d.is_conceal === 1)
-                    if (d.is_conceal === 1) {
+                    console.log(d.isConceal)
+                    console.log(d.isConceal === 1)
+                    if (d.isConceal === 1) {
                       text = '隐藏'
                       clazz = "layui-btn layui-btn-sm layui-btn-danger"
                     }
-                    if (d.is_conceal === 0) {
+                    if (d.isConceal === 0) {
                       text = '显示'
                       clazz = "layui-btn layui-btn-sm"
                     }
@@ -138,10 +138,10 @@
          if (layEvent === 'is_conceal') { //查看
           // 改变状态
           let status
-          if (data.is_conceal === 0) {
+          if (data.isConceal === 0) {
             status = 1
           }
-          else if (data.is_conceal === 1) {
+          else if (data.isConceal === 1) {
             status = 0
           }
 
@@ -152,7 +152,7 @@
           $.ajax({
             type: "post",// 提交的http方法
             url: "/back/admin/stores/update/", // 提交到后端的接口
-            data: {id: id, is_conceal: status}, // 提交到后端的数据
+            data: {id: id, isConceal: status}, // 提交到后端的数据
             dataType: "json", // 后端返回的数据
             success: function (res) { // 后端成功返回数据之后的回调
               if (res.code === 200) {
