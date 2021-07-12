@@ -79,28 +79,30 @@
         <div class="flexslider">
             <ul class="slides">
                 <li>
-                    <%--just a test--%>
                     <img id="homeBanner1" src="" alt=""/>
                 </li>
                 <li>
-                    <img id="homeBanner2" src="${pageContext.request.contextPath}/static/front/upload/banner.jpg"
+                    <img id="homeBanner2" src=""
                          alt=""/>
                 </li>
                 <li>
-                    <img id="homeBanner3" src="${pageContext.request.contextPath}/static/front/upload/banner.jpg"
+                    <img id="homeBanner3" src=""
                          alt=""/>
                 </li>
             </ul>
             <script>
                 $(function () {
                     $.ajax({
-                        url: "index/banners",
+                        url: "index/mainbanners",
                         type: "post",
                         success: function (response) {
                             console.log(response)
                             if (response.code === 200) {
-                                let urls = response.data
-                                $("img#homeBanner1").attr("src",urls[0])
+                                let data = response.data
+                                let BASE_URL = "http://img.afblog.love/"
+                                $("img#homeBanner1").attr("src", BASE_URL + data[0].url)
+                                $("img#homeBanner2").attr("src", BASE_URL + data[1].url)
+                                $("img#homeBanner3").attr("src", BASE_URL + data[1].url)
                             }
                         },
                         error: function (response) {
@@ -301,7 +303,7 @@
     </div>
 </div>
 <div class="space_hx">&nbsp;</div>
-<div class="bq">Copyright © 2007-2013 heicha.com All Rights Reserved</div>
+<div class="bq">Copyright © 2020-2021 ODD STUDIO All Rights Reserved</div>
 <script>
     $(function () {
 
