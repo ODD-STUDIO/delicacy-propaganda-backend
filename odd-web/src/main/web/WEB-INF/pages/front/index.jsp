@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=utf-8"%>
+<%@ page contentType="text/html;charset=utf-8" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -79,15 +79,36 @@
         <div class="flexslider">
             <ul class="slides">
                 <li>
-                    <img src="${pageContext.request.contextPath}/static/front/upload/banner.jpg" alt=""/>
+                    <%--just a test--%>
+                    <img id="homeBanner1" src="" alt=""/>
                 </li>
                 <li>
-                    <img src="${pageContext.request.contextPath}/static/front/upload/banner.jpg" alt=""/>
+                    <img id="homeBanner2" src="${pageContext.request.contextPath}/static/front/upload/banner.jpg"
+                         alt=""/>
                 </li>
                 <li>
-                    <img src="${pageContext.request.contextPath}/static/front/upload/banner.jpg" alt=""/>
+                    <img id="homeBanner3" src="${pageContext.request.contextPath}/static/front/upload/banner.jpg"
+                         alt=""/>
                 </li>
             </ul>
+            <script>
+                $(function () {
+                    $.ajax({
+                        url: "index/banners",
+                        type: "post",
+                        success: function (response) {
+                            console.log(response)
+                            if (response.code === 200) {
+                                let urls = response.data
+                                $("img#homeBanner1").attr("src",urls[0])
+                            }
+                        },
+                        error: function (response) {
+                            console.log(response)
+                        }
+                    })
+                })
+            </script>
         </div>
     </div>
     <%--not implemented yet--%>
