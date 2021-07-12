@@ -25,7 +25,7 @@
 <div class="header">
     <div class="head_bg">&nbsp;</div>
     <div class="head clearfix">
-        <div class="logo"><a href=""><img src="${pageContext.request.contextPath}/static/front/images/logo.png"
+        <div class="logo"><a href="index"><img src="${pageContext.request.contextPath}/static/front/images/logo.png"
                                           alt="黑茶"/></a></div>
         <ul class="nav clearfix">
             <li><a href="index">首页<span>HOME</span></a></li>

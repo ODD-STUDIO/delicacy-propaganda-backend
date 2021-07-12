@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
-    <title>jstore</title>
+    <title>store</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/front/css/reset.css"/>
     <script type="text/javascript"
             src="${pageContext.request.contextPath}/static/front/js/jquery-1.8.3.min.js"></script>
@@ -25,14 +25,14 @@
 <div class="header">
     <div class="head_bg">&nbsp;</div>
     <div class="head clearfix">
-        <div class="logo"><a href=""><img src="${pageContext.request.contextPath}/static/front/images/logo.png"
+        <div class="logo"><a href="index"><img src="${pageContext.request.contextPath}/static/front/images/logo.png"
                                           alt="黑茶"/></a></div>
         <ul class="nav clearfix">
             <li><a href="index">首页<span>HOME</span></a></li>
             <li><a href="about">关于我们<span>ABOUT</span></a></li>
             <li><a href="product">产品简介<span>PRODUCT</span></a></li>
             <li><a href="join">加盟说明<span>JOIN</span></a></li>
-            <li class="now"><a href="jstore">门店资讯<span>JSTORE</span></a></li>
+            <li class="now"><a href="store">门店资讯<span>STORE</span></a></li>
             <li><a href="news">新闻中心<span>NEWS</span></a></li>
             <li><a href="contact">联系我们<span>CONTACT</span></a></li>
         </ul>
@@ -43,7 +43,7 @@
                 <li><a href="about">关于我们<span>ABOUT</span></a></li>
                 <li><a href="product">产品简介<span>PRODUCT</span></a></li>
                 <li><a href="join">加盟说明<span>JOIN</span></a></li>
-                <li class="now"><a href="jstore">门店资讯<span>JSTORE</span></a></li>
+                <li class="now"><a href="store">门店资讯<span>STORE</span></a></li>
                 <li><a href="news">新闻中心<span>NEWS</span></a></li>
                 <li><a href="contact">联系我们<span>CONTACT</span></a></li>
             </ul>
@@ -59,7 +59,7 @@
 <!--幻灯片-->
 <div class="box">
     <div class="pst">
-        <p>JSTORE</p>
+        <p>STORE</p>
         <span>门店资讯</span>
         <div class="wz">当前位置：<a href="">首页</a>><a href="">门店资讯</a></div>
     </div>
