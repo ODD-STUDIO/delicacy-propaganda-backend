@@ -107,8 +107,6 @@
                 { field: 'status', title: '状态', width: '7%', templet: function (d) {
                     let text;
                     let clazz;
-                    console.log(d.status)
-                    console.log(d.status === 1)
                     if (d.status === 1) {
                       text = '隐藏'
                       clazz = "layui-btn layui-btn-sm layui-btn-danger"

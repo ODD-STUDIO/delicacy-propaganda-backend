@@ -2,4 +2,7 @@
 /odd-dao/target/
 /odd-service/target/
 /odd-web/target/
+/*.iml
 /odd-bean/target/
+/out/
+/.idea

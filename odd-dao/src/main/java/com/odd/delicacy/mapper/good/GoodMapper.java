@@ -27,4 +27,6 @@ public interface GoodMapper extends BaseMapper<Good> {
 
     @Override
     int deleteById(@Param("id") Long id);
+
+    int deleteAll(@Param("ids") String[] ids);
 }
