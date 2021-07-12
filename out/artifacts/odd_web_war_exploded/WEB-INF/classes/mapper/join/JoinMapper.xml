@@ -23,7 +23,7 @@
 
     <select id="findList" parameterType="com.odd.delicacy.entity.join.JoinInfo" resultMap="JoinVO">
         SELECT
-            j.id, j.franchisees_name, j.franchisees_address, j.franchisees_phonenum, j.franchisees_reason
+            j.id, j.franchisees_name, j.franchisees_address, j.franchisees_phonenum, j.franchisees_reason, j.create_time, j.update_time
         FROM
             `join` j
         WHERE
