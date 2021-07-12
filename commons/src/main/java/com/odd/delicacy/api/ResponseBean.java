@@ -9,6 +9,15 @@ import java.time.Instant;
 /**
  * 接口统一返回类
  *
+ * At side of frontend,the object is like this:
+ * {
+ *     "code":200,
+ *     "msg":"响应成功",
+ *     "data":{...},
+ *     "timestamp":222
+ * }
+ * You can judge the code to decide if you could retrieve data to display.
+ *
  * @author Tanglinfeng
  * @date 2021/7/6 9:28
  */
@@ -78,15 +87,18 @@ public class ResponseBean<T> implements Serializable {
         return this.code == DefaultResultCode.SUCCESS.code();
     }
 
+    //considering use package-private
     public ResponseBean(ResultCode resultCode, T data) {
         this.code = resultCode.code();
         this.msg = resultCode.msg();
         this.data = data;
     }
 
+    //considering use package-private
     public ResponseBean() {
     }
 
+    //considering use package-private
     public ResponseBean(int code, String msg, T data) {
         this.code = code;
         this.msg = msg;
