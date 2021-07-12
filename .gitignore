@@ -2,9 +2,8 @@
 /odd-dao/target/
 /odd-service/target/
 /odd-web/target/
-/odd-bean/target/
-/odd-web/odd-web.iml
-/out/
 /odd-web/src/main/resources/jdbc-dev.properties
-/*.iml
+/odd-bean/target/
 /.idea/
+/out/
+/**/*.iml
