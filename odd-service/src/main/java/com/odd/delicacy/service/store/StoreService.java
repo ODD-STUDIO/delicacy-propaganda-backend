@@ -15,5 +15,13 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Service
 public class StoreService extends BaseService<StoreMapper, Store> {
-
+    /**
+     * 批量删除
+     *
+     * @param ids
+     * @return
+     */
+    public boolean deleteAll(String[] ids) {
+        return this.mapper.deleteAll(ids) > 0;
+    }
 }

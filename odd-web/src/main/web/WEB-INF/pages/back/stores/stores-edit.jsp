@@ -1,4 +1,4 @@
-w<%@ page contentType="text/html;charset=utf-8" language="java"%>
+<%@ page contentType="text/html;charset=utf-8" language="java"%>
 <html>
   
   <head>
@@ -23,128 +23,75 @@ w<%@ page contentType="text/html;charset=utf-8" language="java"%>
   <body>
     <div class="x-body">
         <form class="layui-form">
+            <input type="hidden" name="id" value="${store.id}">
             <div class="layui-form-item">
                 <label class="layui-form-label">
-                    <span class="x-red">*</span>轮播图分类
+                    <span class="x-red">*</span>店铺名称
                 </label>
                 <div class="layui-input-inline">
-                    <select name="type">
-                        <option value="GOODS">GOODS</option>
-                        <option value="NEWS">NEWS</option>
+                    <input type="text"  name="url" value="${store.store_name}" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class="x-red">*</span>店铺营业时间
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text"  name="url" value="${store.store_name}" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class="x-red">*</span>店铺地址
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text"  name="url" value="${store.store_name}" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class="x-red">*</span>店铺联系方式
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text"  name="url" value="${store.store_name}" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class="x-red">*</span>店铺状态
+                </label>
+                <div class="layui-input-inline">
+                    <select name="status">
+                        <option value="0" ${store.is_conceal == 0 ? 'selected' : ''}>显示</option>
+                        <option value="1" ${store.is_conceal == 1 ? 'selected' : ''}>隐藏</option>
                     </select>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class="x-red">*</span>关联ID
-                </label>
-                <div class="layui-input-inline">
-                    <input type="text"  name="associateId" lay-verify="required"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class="x-red">*</span>轮播图状态
-                </label>
-                <div class="layui-input-inline">
-                <select name="status">
-                    <option value="0">显示</option>
-                    <option value="1">隐藏</option>
-                    <option value="2">首页显示</option>
-                </select>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label  class="layui-form-label">
-                    <span class="x-red">*</span>轮播排序
-                </label>
-                <div class="layui-input-inline">
-                    <input type="number" value="0"  name="orderNum" lay-verify="required"
-                           autocomplete="off" class="layui-input">
-                </div>
-                <div class="layui-form-mid layui-word-aux">
-                    数字越大越靠前
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class="x-red"></span>轮播跳转地址
-                </label>
-                <div class="layui-input-inline">
-                    <input type="text"  name="link"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label  class="layui-form-label">
-                    <span class="x-red">*</span>轮播图片
-                </label>
-                <div class="layui-input-inline">
-                    <div class="layui-upload-drag" id="up-btn">
-                        <i class="layui-icon"></i>
-                        <p>点击上传，或将图片拖拽到此处</p>
-                    </div>
-                    <input type="hidden"  name="url" required=""  autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">
                 </label>
                 <button  class="layui-btn" lay-filter="add" lay-submit="">
-                    增加
+                    编辑
                 </button>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                </label>
-                <div class="layui-hide" id="thumb">
-                    <hr>
-                    <img src="" alt="上传成功后渲染" style="width: 600px">
-                </div>
             </div>
         </form>
     </div>
-    <script>
-        layui.use(['form','layer','upload'], function () {
+<script>
+        layui.use(['form','layer'], function(){
             $ = layui.jquery;
-            let form = layui.form,layer = layui.layer;
-            let upload = layui.upload;
-
-            //执行实例
-            let uploadInst = upload.render({
-                elem: '#up-btn', //绑定元素
-                url: '/back/admin/carousel/upload', //上传接口
-                accept: 'images',
-                done: function (res) {
-                    //上传完毕回调
-                    if (res.code === 200){
-                        layer.msg("上传成功")
-                        layui.$("#thumb").removeClass('layui-hide').find('img').attr('src', 'http://img.afblog.love/'+res.data);
-                        // 存放到隐藏域中，用于存放到数据库
-                        $("input[name=url]").val(res.data);
-                    }
-                },
-                error: function() {
-                    //请求异常回调
-                    layer.msg("上传失败！")
-                }
-            });
-
-
+            let form = layui.form, layer = layui.layer;
             //监听提交
             form.on('submit(add)', function(data){
                 console.log(data.field);
                 //发异步，把数据提交给java
                 $.ajax({
                     type: "post",// 提交的http方法
-                    url: "/back/admin/carousel/add", // 提交到后端的接口
+                    url: "/back/admin/stores/update", // 提交到后端的接口
                     data: data.field, // 提交到后端的数据
                     dataType: "json", // 后端返回的数据
                     success: function (res) { // 后端成功返回数据之后的回调
                         if (res.code === 200){
-                            layer.alert(res.msg, {icon: 6}, function () {
-
+                            layer.alert(res.msg, {icon: 6},function () {
                                 // 获得frame索引
                                 var index = parent.layer.getFrameIndex(window.name);
                                 //关闭当前frame
@@ -157,10 +104,8 @@ w<%@ page contentType="text/html;charset=utf-8" language="java"%>
                 })
                 return false;
             });
-
-
         });
-    </script>
+</script>
 
   </body>
 

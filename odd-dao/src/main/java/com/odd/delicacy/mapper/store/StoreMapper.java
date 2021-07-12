@@ -2,6 +2,7 @@ package com.odd.delicacy.mapper.store;
 
 import com.odd.delicacy.base.BaseMapper;
 import com.odd.delicacy.entity.good.Good;
+import com.odd.delicacy.entity.picture.Picture;
 import com.odd.delicacy.entity.store.Store;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -31,4 +32,8 @@ public interface StoreMapper extends BaseMapper<Store> {
     @Override
     int deleteById(@Param("id") Long id);
 
+    int deleteAll(@Param("ids") String[] ids);
+
+    @Override
+    Store findById(Long id);
 }

@@ -68,4 +68,13 @@ public class RouterBackController {
         model.addAttribute("goodCategory", goodCategoryService.findList(null));
         return "back/goods/goods-add";
     }
+
+    @GetMapping("/stores")
+    public String toStores(){ return "back/stores/stores-list"; }
+
+    @GetMapping("/stores/add")
+    public String toStoresAdd() {
+        return "back/stores/stores-add";
+    }
+
 }

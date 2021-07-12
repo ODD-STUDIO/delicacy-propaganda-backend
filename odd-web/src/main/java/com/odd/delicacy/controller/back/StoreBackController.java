@@ -2,6 +2,7 @@ package com.odd.delicacy.controller.back;
 
 import com.github.pagehelper.PageInfo;
 import com.odd.delicacy.api.ResponseBean;
+import com.odd.delicacy.entity.picture.Picture;
 import com.odd.delicacy.entity.store.Store;
 import com.odd.delicacy.service.store.StoreService;
 import com.odd.delicacy.util.PageUtil;
@@ -9,6 +10,8 @@ import com.odd.delicacy.valid.Create;
 import com.odd.delicacy.valid.Update;
 import com.odd.delicacy.vo.PageVO;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +21,8 @@ import org.springframework.web.bind.annotation.*;
  * @author Potato
  * @date 2021/7/5 18:18
  */
-@RestController
-@RequestMapping("/back/stores")
+@Controller
+@RequestMapping("/back/admin/stores")
 @AllArgsConstructor
 public class StoreBackController {
 
@@ -32,25 +35,28 @@ public class StoreBackController {
      * @param store 动态查询对象
      * @return
      */
-    @GetMapping("/list/{pageNum}")
-    public PageVO<Store> listStores(@PathVariable("pageNum") int pageNum, Store store) {
-        // 构建分页查询对象
-        // ...
-        // TODO 这里写死为一页 6 条，后期可以更改为前端传值
-        PageInfo<Store> pageInfo = PageUtil.pageInfo(pageNum, 6);
-        return StoreService.findPage(pageInfo, store);
-    }
 
+    @ResponseBody
+    @GetMapping("/list")
+    public ResponseBean<PageVO<Store>> list(@RequestParam(value = "limit") int pageSize,
+                                            @RequestParam(value = "page") int pageNum,
+                                            Store store) {
+        PageInfo<Store> pageInfo = PageUtil.pageInfo(pageNum, pageSize);
+        return ResponseBean.success(StoreService.findPage(pageInfo, store));
+    }
     /**
      * 新增商品
      *
      * @param store
      * @return
      */
+
+    @ResponseBody
     @PostMapping("/add")
-    public ResponseBean<Boolean> createStore(@Validated(Create.class) @RequestBody Store store) {
+    public ResponseBean<Boolean> add(Store store) {
         return ResponseBean.success(StoreService.insert(store));
     }
+
 
     /**
      * 删除商品
@@ -59,8 +65,21 @@ public class StoreBackController {
      * @return
      */
     @DeleteMapping("/delete/{id}")
+    @ResponseBody
     public ResponseBean<Boolean> deleteStore(@PathVariable("id") long id) {
         return ResponseBean.success(StoreService.deleteById(id));
+    }
+    @PostMapping("/delete/all")
+    @ResponseBody
+    public ResponseBean<Boolean> deleteAll(@RequestParam(name = "ids[]") String[] ids) {
+        return ResponseBean.success(StoreService.deleteAll(ids));
+    }
+
+
+    @GetMapping("/update")
+    public String toUpdatePage(Long id, Model model) {
+        model.addAttribute("store", StoreService.findById(id));
+        return "back/stores/stores-edit";
     }
 
     /**
@@ -69,8 +88,21 @@ public class StoreBackController {
      * @param store
      * @return
      */
-    @PutMapping("/update")
-    public ResponseBean<Boolean> updateStore(@Validated(Update.class) @RequestBody Store store) {
+
+    @PostMapping("/update")
+    @ResponseBody
+    public ResponseBean<Boolean> updateStore(Store store) {
         return ResponseBean.success(StoreService.update(store));
     }
+
+    /**
+     * 跳转到更新页
+     *
+     * @param id
+     * @param model
+     * @return
+     */
+
+
+
 }

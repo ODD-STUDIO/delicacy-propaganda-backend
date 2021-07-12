@@ -29,27 +29,28 @@
         <a>
           <cite>导航元素</cite></a>
       </span>
-      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
-        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
     </div>
     <div class="x-body">
       <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so">
-          <input class="layui-input" placeholder="开始日" name="start" id="start">
-          <input class="layui-input" placeholder="截止日" name="end" id="end">
-          <div class="layui-input-inline">
-            <select name="contrller">
-              <option value="">stores</option>
-              <option value="0">NEWS</option>
-            </select>
+        <form class="layui-form">
+          <div class="layui-form-item">
+            <label class="layui-form-label">
+              <span class="x-red"></span>店铺隐藏状态
+            </label>
+            <div class="layui-input-inline">
+              <select name="is_conceal">
+                <option value="0">显示</option>
+                <option value="1">隐藏</option>
+              </select>
+            </div>
           </div>
-          <input type="text" name="username"  placeholder="请输入" autocomplete="off" class="layui-input">
-          <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+
+          <button class="layui-btn" data-type="reload"  lay-submit="" lay-filter="search"><i class="layui-icon">&#xe615;</i></button>
         </form>
       </div>
       <xblock class="deleteAll">
         <button class="layui-btn layui-btn-danger" data-type="getCheckData" ><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加轮播','/back/admin/store/add',800,600)"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加店铺信息','/back/admin/stores/add',800,600)"><i class="layui-icon"></i>添加</button>
       </xblock>
 
       <table class="layui-table" id="data-table" lay-filter="data-table"></table>
@@ -59,16 +60,12 @@
 
       let tableIns
 
-      layui.use(['laydate', 'table'], function () {
+      layui.use(['table', 'form'], function () {
         let table = layui.table;
-        let laydate = layui.laydate
+        let form = layui.form;
+        $ = layui.jquery;
 
-        laydate.render({
-          elem: '#start'
-        });
-        laydate.render({
-          elem: '#end'
-        });
+        form.render()
 
         tableIns = table.render({
               elem: '#data-table',
@@ -92,63 +89,70 @@
               cols: [[
                 { type:'checkbox', fixed: 'left', style: 'height:50px'},
                 { field: 'id', width: '5%', title: 'ID', sort: true },
-                { field: 'url', width: '11%', title: '图片', style: 'height: 50px', templet: function (d) {
-                    return "<img src='"+d.url+"' width='200px'/>"
-                } },
-                { field: 'associateId', width: '10%', title: '关联ID' },
-                { field: 'type', width: '7%', title: '图片类型' },
-                { field: 'link', width: '13%', title: '图片跳转' },
-                { field: 'orderNum', width: '5%', title: '排序' },
-                { field: 'status', title: '状态', width: '7%', templet: function (d) {
+                { field: 'store_name', width: '11%', title: '店铺名称', style: 'height: 50px' },
+                { field: 'store_opentime', width: '10%', title: '店铺营业时间' },
+                { field: 'store_address', width: '10%', title: '店铺地址' },
+                { field: 'store_tele', width: '10%', title: '联系方式' },
+                { field: 'is_conceal', width: '7%', title: '显示状态',templet:function (d){
                     let text;
                     let clazz;
-                    console.log(d.status)
-                    console.log(d.status === 1)
-                    if (d.status === 1) {
+                    console.log(d.is_conceal)
+                    console.log(d.is_conceal === 1)
+                    if (d.is_conceal === 1) {
                       text = '隐藏'
                       clazz = "layui-btn layui-btn-sm layui-btn-danger"
                     }
-                    if (d.status === 2) {
-                      text = '首页显示'
-                      clazz = "layui-btn layui-btn-sm layui-btn-warm"
-                    }
-                    if (d.status === 0) {
-                      text = '正常'
+                    if (d.is_conceal === 0) {
+                      text = '显示'
                       clazz = "layui-btn layui-btn-sm"
                     }
                     return "<span class='"+clazz+"'>"+text+"</span>";
                   }},
                 { field: 'createTime', width: '10%', title: '创建时间', sort: true},
                 { field: 'updateTime', width: '10%', title: '更新时间'},
-                { fixed: 'right', title: '操作', width:'15%',style:'height:50px', toolbar:"#bar"}
+                { fixed: 'right', title: '操作', width:'30%',style:'height:50px', toolbar:"#bar"}
               ]],
             });
+
+
+        form.on('submit(search)', function (data) {
+          tableIns.reload({
+            method : 'get',
+            where : data.field,
+            page : {
+              curr : 1
+            }
+          });
+          return false;
+        });
+
 
       //工具条事件
       table.on('tool(data-table)', function(obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
         var data = obj.data; //获得当前行数据
         var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
-        var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
 
-        if (layEvent === 'status') { //查看
+
+
+
+         if (layEvent === 'is_conceal') { //查看
           // 改变状态
-          let status;
-          if (data.status === 0) {
-            status = 2
-          }
-          if (data.status === 1) {
-            status = 0
-          }
-          if (data.status === 2) {
+          let status
+          if (data.is_conceal === 0) {
             status = 1
           }
+          else if (data.is_conceal === 1) {
+            status = 0
+          }
+
+
           let id = data.id;
 
           // TODO 更新 删除
           $.ajax({
             type: "post",// 提交的http方法
-            url: "/back/store/update/do", // 提交到后端的接口
-            data: {storeId: id, storeStatus: status}, // 提交到后端的数据
+            url: "/back/admin/stores/update/", // 提交到后端的接口
+            data: {id: id, is_conceal: status}, // 提交到后端的数据
             dataType: "json", // 后端返回的数据
             success: function (res) { // 后端成功返回数据之后的回调
               if (res.code === 200) {
@@ -161,9 +165,8 @@
           layer.confirm('真的删除吗?', function (index) {
             //向服务端发送删除指令
             $.ajax({
-              type: "post",// 提交的http方法
-              url: "/back/store/update/do", // 提交到后端的接口
-              data: {storeId: data.storeId, isDeleted: 1}, // 提交到后端的数据
+              type: "delete",// 提交的http方法
+              url: "/back/admin/stores/delete/" + data.id, // 提交到后端的接口
               dataType: "json", // 后端返回的数据
               success: function (res) { // 后端成功返回数据之后的回调
                 if (res.code === 200) {
@@ -171,6 +174,7 @@
                   tableIns.reload();
                   obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
                   layer.close(index);
+
                 }
               }
             });
@@ -178,7 +182,7 @@
         } else if (layEvent === 'edit') { //编辑
           //do something
           // 需要打开编辑页面
-          x_admin_show('编辑轮播', '/back/store/update/page?id=' + data.storeId, 800, 600)
+          x_admin_show('编辑该店铺信息', '/back/admin/stores/update?id=' + data.id, 800, 600)
 
         } else if (layEvent === 'LAYTABLE_TIPS') {
           layer.alert('Hi，头部工具栏扩展的右侧图标。');
@@ -198,12 +202,12 @@
           $(data).each(function () {
             ids.push(this.id);
           })
-          // TODO 批量删除
+
           // 发送异步数据执行删除
           layer.confirm('真的删除吗?', function (index) {
             $.ajax({
               type: "post",// 提交的http方法
-              url: "/back/store/delete/all", // 提交到后端的接口
+              url: "/back/admin/stores/delete/all", // 提交到后端的接口
               data: {ids: ids}, // 提交到后端的数据
               dataType: "json", // 后端返回的数据
               success: function (res) { // 后端成功返回数据之后的回调
@@ -229,7 +233,7 @@
 
     </script>
     <script type="text/html" id="bar">
-      <a class="layui-btn layui-btn-xs" lay-event="status">改变状态</a>
+      <a class="layui-btn layui-btn-xs" lay-event="is_conceal">改变隐藏状态</a>
       <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
       <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     </script>

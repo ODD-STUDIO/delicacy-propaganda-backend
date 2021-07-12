@@ -38,27 +38,25 @@
                 store_address,
                 store_tele,
              <if test="is_conceal != null" >
-                 is_conceal
+                 is_conceal,
              </if>
-                ,
              <if test="is_deleted != null" >
-                 is_deleted
+                 is_deleted,
              </if>
-                ,
                 create_time)
         VALUES
-             (#{store_name},#{store_opentime},#{store_address},
+             (#{store_name},#{store_opentime},#{store_address},#{store_tele},
               <if test="is_conceal !=null" >#{is_conceal},</if>
                <if test="is_deleted != null">#{is_deleted},</if>
                 now())
-        )
+
     </insert>
 
     <select id="findList" parameterType="com.odd.delicacy.entity.store.Store" resultMap="storeVO">
         <include refid="select"/>
         WHERE
-        <if test="store_name != null and store_name != ''">
-            store_name like concat(#{store_name}, '%') AND
+        <if test="is_conceal != null and is_conceal!= ''">
+            is_conceal = #{is_conceal} AND
         </if>
         is_deleted = 0
     </select>
@@ -78,14 +76,41 @@
             <if test="store_tele != null and store_tele != ''">
                 store_tele = #{store_tele},
             </if>
-            <if test="is_conceal != null and is_conceal != ''">
+            <if test="is_conceal != null">
                 is_conceal = #{is_conceal},
             </if>
             <if test="is_deleted != null and is_deleted != ''">
                 is_deleted = #{is_deleted},
             </if>
             update_time = now()
+
+            where id = #{id}
         </set>
+    </update>
+
+    <select id="findById" resultType="Store">
+        SELECT
+            id,
+            store_name,
+            store_opentime,
+            store_address,
+            store_tele,
+            is_conceal,
+            is_deleted,
+            create_time,
+            update_time
+        FROM
+            store_info
+        WHERE
+            id = #{id}
+    </select>
+
+    <update id="deleteAll">
+        UPDATE store_info SET is_deleted = 1
+        WHERE id in
+        <foreach collection="ids" open="(" separator="," close=")" item="id">
+            #{id}
+        </foreach>
     </update>
 
     <update id="deleteById" parameterType="long">
