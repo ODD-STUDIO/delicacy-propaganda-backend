@@ -62,10 +62,10 @@ SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for join
+-- Table structure for joinInfo
 -- ----------------------------
-DROP TABLE IF EXISTS `join`;
-CREATE TABLE `join`  (
+DROP TABLE IF EXISTS `joinInfo`;
+CREATE TABLE `joinInfo`  (
   `id` int(0) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '加盟者id',
   `franchisees_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '加盟者姓名',
   `franchisees_phonenum` char(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '加盟者电话',
@@ -79,7 +79,7 @@ CREATE TABLE `join`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '申请加盟表' ROW_FORMAT = Compressed;
 
 -- ----------------------------
--- Records of join
+-- Records of joinInfo
 -- ----------------------------
 
 SET FOREIGN_KEY_CHECKS = 1;
