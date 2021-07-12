@@ -15,4 +15,8 @@ import java.util.List;
 @Service
 public class GoodService extends BaseService<GoodMapper, Good> {
 
+
+    public boolean deleteAll(String[] ids) {
+        return this.mapper.deleteAll(ids) > 0;
+    }
 }
