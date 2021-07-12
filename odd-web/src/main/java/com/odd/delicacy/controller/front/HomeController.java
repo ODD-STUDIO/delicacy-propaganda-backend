@@ -26,4 +26,12 @@ public class HomeController {
         List<Picture> pictures = pictureService.findList(picture);
         return ResponseBean.success(pictures);
     }
+
+
+    @PostMapping("storebanners")
+    public ResponseBean<List<Picture>> homeStoreBanners() {
+        Picture picture = new Picture();
+        //TODO
+        return ResponseBean.fail(500, "not implemented yet");
+    }
 }
