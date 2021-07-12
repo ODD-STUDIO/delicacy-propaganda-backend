@@ -14,7 +14,9 @@ public enum DefaultResultCode implements ResultCode {
 
     SUCCESS(200, "响应成功"),
     FAIL(400, "请求失败"),
-    ERROR(500, "系统繁忙");
+    ERROR(500, "系统繁忙")
+
+    ;
 
     private final int code;
 
