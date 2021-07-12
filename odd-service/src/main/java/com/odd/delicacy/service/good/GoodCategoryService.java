@@ -12,4 +12,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class GoodCategoryService extends BaseService<GoodCategoryMapper, GoodCategory> {
+
+    public boolean deleteAll(String[] ids) {
+        return this.mapper.deleteAll(ids) > 0;
+    }
 }

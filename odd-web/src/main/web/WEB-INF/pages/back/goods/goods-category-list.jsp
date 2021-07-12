@@ -36,32 +36,21 @@
         <form class="layui-form">
           <div class="layui-form-item">
             <label class="layui-form-label">
-              <span class="x-red"></span>商品名称
+              <span class="x-red"></span>分类名称
             </label>
             <div class="layui-input-inline">
-              <input type="text" name="goodName"  placeholder="请输入商品名称" autocomplete="off" class="layui-input">
+              <input type="text" name="goodCategoryName"  placeholder="请输入分类名" autocomplete="off" class="layui-input">
             </div>
           </div>
           <div class="layui-form-item">
             <label class="layui-form-label">
-              <span class="x-red"></span>商品状态
+              <span class="x-red"></span>分类状态
             </label>
             <div class="layui-input-inline">
               <select name="goodStatus">
-                <option value="0">非新品</option>
-                <option value="1">新品</option>
-              </select>
-            </div>
-          </div>
-          <div class="layui-form-item">
-            <label class="layui-form-label">
-              <span class="x-red">*</span>商品分类
-            </label>
-            <div class="layui-input-inline">
-              <select name="goodCategory.id">
-                <c:forEach var="type" items="${goodCategory}">
-                  <option value="${type.id}"> ${type.goodCategoryName} </option>
-                </c:forEach>
+                <option value="0">正常</option>
+                <option value="1">有上新</option>
+                <option value="2">屏蔽</option>
               </select>
             </div>
           </div>
@@ -70,7 +59,7 @@
       </div>
       <xblock class="deleteAll">
         <button class="layui-btn layui-btn-danger" data-type="getCheckData" ><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加商品','/back/admin/goods/add',800,600)"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加分类','/back/admin/goods/category/add',800,600)"><i class="layui-icon"></i>添加</button>
       </xblock>
 
       <table class="layui-table" id="data-table" lay-filter="data-table"></table>
@@ -89,7 +78,7 @@
 
         tableIns = table.render({
               elem: '#data-table',
-              url: '/back/admin/goods/list',
+              url: '/back/admin/goods/category/list',
               method: 'GET',
               page: true,
               limits: [5, 8, 10, 12],
@@ -109,27 +98,24 @@
               cols: [[
                 { type:'checkbox', fixed: 'left', style: 'height:50px'},
                 { field: 'id', width: '5%', title: 'ID', sort: true },
-                { field: 'goodName', width: '11%', title: '商品名称', style: 'height: 50px' },
-                { field: 'goodCategory.goodCategoryName', width: '10%', title: '商品分类', templet: function (d) {
-                    return d.goodCategory.goodCategoryName
-                  }},
-                { field: 'goodDesc', width: '10%', title: '商品描述' },
-                { field: 'goodStatus', title: '状态', width: '7%', templet: function (d) {
+                { field: 'goodCategoryName', width: '11%', title: '商品名称', style: 'height: 50px' },
+                { field: 'goodCategoryStatus', title: '状态', width: '7%', templet: function (d) {
                     let text;
                     let clazz;
-                    if (d.goodStatus === 1) {
-                      text = '新品'
+                    if (d.goodCategoryStatus === 2) {
+                      text = '隐藏'
                       clazz = "layui-btn layui-btn-sm layui-btn-danger"
                     }
-                    if (d.goodStatus === 0) {
-                      text = '非新品'
+                    if (d.goodCategoryStatus === 1) {
+                      text = '有上新'
+                      clazz = "layui-btn layui-btn-sm layui-btn-warm"
+                    }
+                    if (d.goodCategoryStatus === 0) {
+                      text = '正常'
                       clazz = "layui-btn layui-btn-sm"
                     }
                     return "<span class='"+clazz+"'>"+text+"</span>";
                   }},
-                { field: 'goodThumb', width: '11%', title: '图片', style: 'height: 50px', templet: function (d) {
-                    return "<img src='"+'http://img.afblog.love/'+d.goodThumb+"' width='200px'/>"
-                  } },
                 { field: 'createTime', width: '10%', title: '创建时间', sort: true},
                 { field: 'updateTime', width: '10%', title: '更新时间'},
                 { fixed: 'right', title: '操作', width:'15%',style:'height:50px', toolbar:"#bar"}
@@ -157,13 +143,22 @@
 
         if (layEvent === 'status') { //查看
           // 改变状态
-          let status = data.goodStatus === 0 ? 1 : 0;
+          let status;
+          if (data.goodCategoryStatus === 0) {
+            status = 2
+          }
+          if (data.goodCategoryStatus === 1) {
+            status = 0
+          }
+          if (data.goodCategoryStatus === 2) {
+            status = 1
+          }
           let id = data.id;
 
           $.ajax({
             type: "post",// 提交的http方法
-            url: "/back/admin/goods/update/", // 提交到后端的接口
-            data: {id: id, goodStatus: status}, // 提交到后端的数据
+            url: "/back/admin/goods/category/update/", // 提交到后端的接口
+            data: {id: id, goodCategoryStatus: status}, // 提交到后端的数据
             dataType: "json", // 后端返回的数据
             success: function (res) { // 后端成功返回数据之后的回调
               if (res.code === 200) {
@@ -177,7 +172,7 @@
             //向服务端发送删除指令
             $.ajax({
               type: "delete",// 提交的http方法
-              url: "/back/admin/goods/delete/" + data.id, // 提交到后端的接口
+              url: "/back/admin/goods/category/delete/" + data.id, // 提交到后端的接口
               dataType: "json", // 后端返回的数据
               success: function (res) { // 后端成功返回数据之后的回调
                 if (res.code === 200) {
@@ -193,7 +188,7 @@
         } else if (layEvent === 'edit') { //编辑
           //do something
           // 需要打开编辑页面
-          x_admin_show('编辑轮播', '/back/admin/goods/update?id=' + data.id, 800, 600)
+          x_admin_show('编辑页面', '/back/admin/goods/category/update?id=' + data.id, 800, 600)
 
         } else if (layEvent === 'LAYTABLE_TIPS') {
           layer.alert('Hi，头部工具栏扩展的右侧图标。');
@@ -218,7 +213,7 @@
           layer.confirm('真的删除吗?', function (index) {
             $.ajax({
               type: "post",// 提交的http方法
-              url: "/back/admin/goods/delete/all", // 提交到后端的接口
+              url: "/back/admin/goods/category/delete/all", // 提交到后端的接口
               data: {ids: ids}, // 提交到后端的数据
               dataType: "json", // 后端返回的数据
               success: function (res) { // 后端成功返回数据之后的回调

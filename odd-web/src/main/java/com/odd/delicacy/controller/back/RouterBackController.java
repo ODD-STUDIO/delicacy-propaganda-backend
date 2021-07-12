@@ -69,6 +69,16 @@ public class RouterBackController {
         return "back/goods/goods-add";
     }
 
+    @GetMapping("/goods/category")
+    public String toGoodsCategory() {
+        return "back/goods/goods-category-list";
+    }
+
+    @GetMapping("/goods/category/add")
+    public String toGoodsCategoryAdd() {
+        return "back/goods/goods-category-add";
+    }
+
     @GetMapping("/stores")
     public String toStores(){ return "back/stores/stores-list"; }
 
