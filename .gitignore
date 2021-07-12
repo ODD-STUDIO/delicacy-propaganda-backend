@@ -5,4 +5,5 @@
 /*.iml
 /odd-bean/target/
 /out/
-/.idea
+/.idea/
+/odd-web/src/main/resources/jdbc-dev.properties
