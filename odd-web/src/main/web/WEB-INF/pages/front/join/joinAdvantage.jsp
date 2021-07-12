@@ -25,7 +25,7 @@
             <li><a href="index">首页<span>HOME</span></a></li>
             <li><a href="about">关于我们<span>ABOUT</span></a></li>
             <li><a href="product">产品简介<span>PRODUCT</span></a></li>
-            <li class="now"><a href="join">加盟说明<span>JOIN</span></a></li>
+            <li class="now"><a href="">加盟说明<span>JOIN</span></a></li>
             <li><a href="store">门店资讯<span>STORE</span></a></li>
             <li><a href="news">新闻中心<span>NEWS</span></a></li>
             <li><a href="contact">联系我们<span>CONTACT</span></a></li>
@@ -36,7 +36,7 @@
             	<li><a href="index">首页<span>HOME</span></a></li>
                 <li><a href="about">关于我们<span>ABOUT</span></a></li>
                 <li><a href="product">产品简介<span>PRODUCT</span></a></li>
-                <li class="now"><a href="join">加盟说明<span>JOIN</span></a></li>
+                <li class="now"><a href="">加盟说明<span>JOIN</span></a></li>
                 <li><a href="store">门店资讯<span>STORE</span></a></li>
                 <li><a href="news">新闻中心<span>NEWS</span></a></li>
                 <li><a href="contact">联系我们<span>CONTACT</span></a></li>
@@ -53,17 +53,17 @@
 <!--幻灯片-->
 <div class="box">
 	<div class="pst">
-    	<p>JOIN DESCRIPTION</p>
-        <span>加盟说明</span>
-        <div class="wz">当前位置：<a href="">首页</a>><a href="">加盟说明</a></div>
+    	<p>JOIN ADVANTAGE</p>
+        <span>加盟优势</span>
+        <div class="wz">当前位置：<a href="/index">首页</a>><a href="/join/advantage">加盟优势</a></div>
     </div>
 </div>
 <div class="space_hx">&nbsp;</div>
 <div class="t_box">
-	<a href="" class="now">加盟条件<em>></em></a>
-    <a href="">加盟优势<em>></em></a>
-    <a href="">加盟流程<em>></em></a>
-    <a href="">加盟流程<em>></em></a>
+    <a href="/join">加盟条件<em>></em></a>
+    <a href="/join/advantage" class="now">加盟优势<em>></em></a>
+    <a href="/join/flow">加盟流程<em>></em></a>
+    <a href="/join/apply">申请加盟<em>></em></a>
 </div>
 <div class="space_hx">&nbsp;</div>
 <div class="join">
@@ -84,11 +84,11 @@
 <div class="foot">
 	<div class="foot_m clearfix">
     	<div class="f_nav">
-        	<a href="">关于我们</a>
-            <a href="">联系我们</a>
+        	<a href="/about">关于我们</a>
+            <a href="/contact">联系我们</a>
             <a href="">在线留言</a>
-            <a href="">加入我们</a>
-            <a href="">门店资讯</a>
+            <a href="/join">加入我们</a>
+            <a href="/store">门店资讯</a>
         </div>
         <span>Copyright © 2007-2013 heicha.com All Rights Reserved</span>
         <div class="share">

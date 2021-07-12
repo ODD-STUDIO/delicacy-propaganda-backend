@@ -26,7 +26,7 @@ public class RouterFrontController {
 
     @GetMapping("join")
     public String join() {
-        return "front/join";
+        return "front/join/join";
     }
 
     @GetMapping("store")
@@ -43,4 +43,13 @@ public class RouterFrontController {
     public String contact() {
         return "front/contact";
     }
+
+    @GetMapping("join/advantage")
+    public String toJoinAdvantage(){return "front/join/joinAdvantage";}
+
+    @GetMapping("join/flow")
+    public String toJoinFlow(){return "front/join/joinFlow";}
+
+    @GetMapping("join/apply")
+    public String toJoinApply(){return "front/join/joinApply";}
 }
