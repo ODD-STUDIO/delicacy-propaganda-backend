@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.odd.delicacy.mapper.news.NewsMapper">
+
+    <resultMap id="NewsVO" type="com.odd.delicacy.entity.news.News">
+        <id property="id" column="id"/>
+        <result property="newsContent" column="news_content"/>
+        <result property="newsTitle"   column="news_title"/>
+        <result property="newsDesc"    column="news_desc"/>
+        <result property="newsThumb"   column="news_thumb"/>
+        <result property="createTime"  column="create_time"/>
+        <result property="updateTime"  column="update_time"/>
+        <association property="newsType" javaType="com.odd.delicacy.entity.news.NewsType" resultMap="NewsTypeVO"/>
+    </resultMap>
+
+    <resultMap id="NewsTypeVO" type="com.odd.delicacy.entity.news.NewsType">
+        <id property="id" column="news_type_id"/>
+        <result property="newsTypeName" column="news_type_name"/>
+    </resultMap>
+
+    <sql id="selectNews">
+        SELECT
+            news.id,
+            news.news_content,
+            news.news_title,
+            news.news_desc,
+            news.news_thumb,
+            news.update_time,
+            news.create_time,
+            np.id AS news_type_id,
+            np.news_type_name
+        FROM
+            news
+                LEFT JOIN news_type np ON news.news_type = np.id
+    </sql>
+
+    <select id="findList" resultType="com.odd.delicacy.entity.news.News" resultMap="NewsVO">
+        <include refid="selectNews"/>
+        WHERE
+<!--        <if test="goodName != null and goodName != ''">-->
+<!--            g.good_name like concat(#{goodName}, '%') AND-->
+<!--        </if>-->
+<!--        <if test="goodCategory != null">-->
+<!--            g.good_category_id = #{goodCategory.id} AND-->
+<!--        </if>-->
+        news.is_deleted = 0
+--         SELECT
+--             news.id,
+--             news.news_content,
+--             news.news_title,
+--             news.news_desc,
+--             news.news_thumb,
+--             np.news_type_name
+--         FROM
+--             news,
+--             news_type np
+--         WHERE
+--             news.news_type = np.id
+--             AND news.id_deleted = 0
+    </select>
+
+    <insert id="insert" parameterType="com.odd.delicacy.entity.news.News">
+        INSERT INTO news ( news.news_title, news_content, news.news_desc, news.news_type, news.news_thumb, create_time )
+        VALUES
+        (#{newsTitle},#{newsContent},#{newsDesc},#{newsType.id},#{newsThumb},now())
+    </insert>
+
+    <update id="update" parameterType="com.odd.delicacy.entity.news.News">
+        UPDATE news
+        SET news_title = #{newsTitle},
+            news_content = #{newsContent},
+            news_desc = #{newsDesc},
+            news_type = #{newsType.id},
+            news_thumb = #{newsThumb},
+            update_time = now()
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById" parameterType="long">
+        UPDATE news
+        SET is_deleted = 1,
+            update_time = now( )
+        WHERE
+            id = #{id}
+    </delete>
+
+
+    <select id="findById" resultType="com.odd.delicacy.entity.news.News">
+        SELECT news.id, news.news_content, news.news_title, news.news_desc, news.news_thumb
+    </select>
+
+</mapper>
