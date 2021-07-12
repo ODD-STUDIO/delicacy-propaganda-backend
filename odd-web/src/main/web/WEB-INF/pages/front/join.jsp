@@ -26,7 +26,7 @@
             <li><a href="about">关于我们<span>ABOUT</span></a></li>
             <li><a href="product">产品简介<span>PRODUCT</span></a></li>
             <li class="now"><a href="join">加盟说明<span>JOIN</span></a></li>
-            <li><a href="jstore">门店资讯<span>JSTORE</span></a></li>
+            <li><a href="store">门店资讯<span>STORE</span></a></li>
             <li><a href="news">新闻中心<span>NEWS</span></a></li>
             <li><a href="contact">联系我们<span>CONTACT</span></a></li>
         </ul>
@@ -37,7 +37,7 @@
                 <li><a href="about">关于我们<span>ABOUT</span></a></li>
                 <li><a href="product">产品简介<span>PRODUCT</span></a></li>
                 <li class="now"><a href="join">加盟说明<span>JOIN</span></a></li>
-                <li><a href="jstore">门店资讯<span>JSTORE</span></a></li>
+                <li><a href="store">门店资讯<span>STORE</span></a></li>
                 <li><a href="news">新闻中心<span>NEWS</span></a></li>
                 <li><a href="contact">联系我们<span>CONTACT</span></a></li>
             </ul>
