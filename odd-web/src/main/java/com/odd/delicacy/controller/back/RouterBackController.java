@@ -88,3 +88,8 @@ public class RouterBackController {
     }
 
 }
+    @GetMapping("/join")
+    public String toJoin(){ return "back/join/join-list"; }
+
+    @GetMapping("/join/add")
+    public String toJoinAdd(){ return "back/join/join-add"; }

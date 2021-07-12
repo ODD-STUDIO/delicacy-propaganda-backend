@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.odd.delicacy.mapper.join.JoinMapper">
+
+    <resultMap id="JoinVO" type="com.odd.delicacy.entity.join.JoinInfo">
+        <id     property="id"                   column="id"                     />
+        <result property="franchiseesName"      column="franchisees_name"       />
+        <result property="franchiseesAddress"   column="franchisees_address"    />
+        <result property="franchiseesPhonenum"  column="franchisees_phonenum"   />
+        <result property="franchiseesReason"    column="franchisees_reason"     />
+        <result property="createTime"           column="create_time"            />
+        <result property="updateTime"           column="update_time"            />
+    </resultMap>
+
+    <insert id="insert" parameterType="com.odd.delicacy.entity.join.JoinInfo">
+        INSERT INTO `join`
+            (franchisees_name, franchisees_address, franchisees_phonenum, franchisees_reason, create_time)
+        VALUES
+            (#{franchiseesName}, #{franchiseesAddress}, #{franchiseesPhonenum}, #{franchiseesReason}, now())
+    </insert>
+
+    <select id="findList" parameterType="com.odd.delicacy.entity.join.JoinInfo" resultMap="JoinVO">
+        SELECT
+            j.id, j.franchisees_name, j.franchisees_address, j.franchisees_phonenum, j.franchisees_reason, j.create_time, j.update_time
+        FROM
+            `join` j
+        WHERE
+        <if test="franchiseesName != null and franchiseesName != ''">
+            j.franchisees_name like concat(#{franchiseesName}, '%') AND
+        </if>
+            j.is_deleted = 0
+    </select>
+
+    <select id="findById" parameterType="long" resultType="com.odd.delicacy.entity.join.JoinInfo">
+        SELECT
+            j.id, j.franchisees_name, j.franchisees_address, j.franchisees_phonenum, j.franchisees_reason, j.create_time, j.update_time
+        FROM
+            `join` j
+        where
+            j.id = #{id}
+        and
+            j.is_deleted = 0
+    </select>
+
+    <update id="update" parameterType="com.odd.delicacy.entity.join.JoinInfo">
+        UPDATE `join`
+        <set>
+            <if test="franchiseesName != null and franchiseesName != ''">
+                franchisees_name = #{franchiseesName},
+            </if>
+            <if test="franchiseesAddress != null and franchiseesAddress != ''">
+                franchisees_address = #{franchiseesAddress},
+            </if>
+            <if test="franchiseesPhonenum != null and franchiseesPhonenum != ''">
+                franchisees_phonenum = #{franchiseesPhonenum},
+            </if>
+            <if test="franchiseesReason != null and franchiseesReason != ''">
+                franchisees_reason = #{franchiseesReason},
+            </if>
+                update_time = now()
+            Where
+                id = #{id}
+        </set>
+    </update>
+
+    <update id="deleteById" parameterType="long">
+        UPDATE `join`
+        SET is_deleted = 1, update_time = now()
+        WHERE id = #{id}
+    </update>
+    
+    <update id="deleteAll" parameterType="long">
+        update `join` set is_deleted = 1
+        where id in
+        <foreach collection="ids" open="(" separator="," close=")" item="id">
+            #{id}
+        </foreach>
+    </update>
+    
+</mapper>

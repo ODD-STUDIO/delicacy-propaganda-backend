@@ -1,7 +1,8 @@
-package com.odd.delicacy.mapper.good;
+package com.odd.delicacy.mapper.join;
 
 import com.odd.delicacy.base.BaseMapper;
 import com.odd.delicacy.entity.good.Good;
+import com.odd.delicacy.entity.join.JoinInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -14,16 +15,22 @@ import java.util.List;
  */
 @Mapper
 @Repository
-public interface GoodMapper extends BaseMapper<Good> {
+public interface JoinMapper extends BaseMapper<JoinInfo> {
 
     @Override
-    int insert(Good good);
+    int insert(JoinInfo joinInfo);
 
     @Override
-    List<Good> findList(Good good);
+    JoinInfo findById(Long id);
+
+//    @Override
+//    JoinInfo findOne(JoinInfo entity);
 
     @Override
-    int update(Good good);
+    List<JoinInfo> findList(JoinInfo joinInfo);
+
+    @Override
+    int update(JoinInfo joinInfo);
 
     @Override
     int deleteById(@Param("id") Long id);
