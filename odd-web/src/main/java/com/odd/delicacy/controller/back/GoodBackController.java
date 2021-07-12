@@ -3,6 +3,7 @@ package com.odd.delicacy.controller.back;
 import com.github.pagehelper.PageInfo;
 import com.odd.delicacy.api.ResponseBean;
 import com.odd.delicacy.entity.good.Good;
+import com.odd.delicacy.entity.good.GoodCategory;
 import com.odd.delicacy.entity.picture.Picture;
 import com.odd.delicacy.service.good.GoodCategoryService;
 import com.odd.delicacy.service.good.GoodService;
@@ -52,6 +53,22 @@ public class GoodBackController {
     }
 
     /**
+     * 查询商品分类
+     *
+     * @param pageNum 当前页数
+     * @param goodCategory 动态查询对象
+     * @return
+     */
+    @ResponseBody
+    @GetMapping("/category/list")
+    public ResponseBean<PageVO<GoodCategory>> listGoodCategory(@RequestParam(value = "limit") int pageSize,
+                                                               @RequestParam(value = "page") int pageNum,
+                                                               GoodCategory goodCategory) {
+        PageInfo<GoodCategory> pageInfo = PageUtil.pageInfo(pageNum, pageSize);
+        return ResponseBean.success(goodCategoryService.findPage(pageInfo, goodCategory));
+    }
+
+    /**
      * 新增商品
      *
      * @param good
@@ -61,6 +78,18 @@ public class GoodBackController {
     @PostMapping("/add")
     public ResponseBean<Boolean> createGood(@Validated(Create.class) Good good) {
         return ResponseBean.success(goodService.insert(good));
+    }
+
+    /**
+     * 新增商品分类
+     *
+     * @param goodCategory
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("/category/add")
+    public ResponseBean<Boolean> createGoodCategory(@Validated(Create.class) GoodCategory goodCategory) {
+        return ResponseBean.success(goodCategoryService.insert(goodCategory));
     }
 
     /**
@@ -82,6 +111,24 @@ public class GoodBackController {
     }
 
     /**
+     * 删除商品分类
+     *
+     * @param id
+     * @return
+     */
+    @ResponseBody
+    @DeleteMapping("/category/delete/{id}")
+    public ResponseBean<Boolean> deleteGoodCategory(@PathVariable("id") long id) {
+        return ResponseBean.success(goodCategoryService.deleteById(id));
+    }
+
+    @PostMapping("/category/delete/all")
+    @ResponseBody
+    public ResponseBean<Boolean> deleteCategoryAll(@RequestParam(name = "ids[]") String[] ids) {
+        return ResponseBean.success(goodCategoryService.deleteAll(ids));
+    }
+
+    /**
      * 跳转到更新页
      *
      * @param id
@@ -96,6 +143,19 @@ public class GoodBackController {
     }
 
     /**
+     * 跳转到更新页
+     *
+     * @param id
+     * @param model
+     * @return
+     */
+    @GetMapping("/category/update")
+    public String toCategoryUpdatePage(Long id, Model model) {
+        model.addAttribute("goodCategory", goodCategoryService.findById(id));
+        return "back/goods/goods-category-edit";
+    }
+
+    /**
      * 更新商品
      *
      * @param good
@@ -107,4 +167,15 @@ public class GoodBackController {
         return ResponseBean.success(goodService.update(good));
     }
 
+    /**
+     * 更新商品分类
+     *
+     * @param goodCategory
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("/category/update")
+    public ResponseBean<Boolean> updateCategory(@Validated(Update.class) GoodCategory goodCategory) {
+        return ResponseBean.success(goodCategoryService.update(goodCategory));
+    }
 }

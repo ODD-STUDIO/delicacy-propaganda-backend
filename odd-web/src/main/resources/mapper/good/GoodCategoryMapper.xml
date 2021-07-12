@@ -12,6 +12,12 @@
                good_category
     </sql>
 
+    <select id="findById" resultType="GoodCategory">
+        <include refid="selectGoodCategory"/>
+        WHERE
+            id = #{id} AND is_deleted = 0
+    </select>
+
     <insert id="insert" parameterType="GoodCategory">
         INSERT INTO good_category
             (good_category_name,
@@ -20,7 +26,7 @@
                 </if>
              create_time)
         VALUES
-            (#{goodCategoryStatus},
+            (#{goodCategoryName},
                 <if test="goodCategoryStatus != null and goodCategoryStatus != ''">
                     #{goodCategoryStatus},
                 </if>
@@ -42,7 +48,7 @@
     <update id="update" parameterType="GoodCategory">
         UPDATE good_category
         <set>
-            <if test="goodCategoryStatus != null">
+            <if test="goodCategoryStatus != null and goodCategoryStatus != ''">
                 good_category_status = #{goodCategoryStatus},
             </if>
             <if test="goodCategoryName != null and goodCategoryName != ''">
@@ -57,5 +63,13 @@
         UPDATE good_category
         SET is_deleted = 1, update_time = now()
         WHERE id = #{id}
+    </update>
+
+    <update id="deleteAll">
+        UPDATE good_category SET is_deleted = 1
+        WHERE id in
+        <foreach collection="ids" open="(" separator="," close=")" item="id">
+            #{id}
+        </foreach>
     </update>
 </mapper>
